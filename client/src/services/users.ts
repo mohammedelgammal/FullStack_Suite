@@ -5,8 +5,8 @@ import axios, { AxiosResponse } from "axios";
 import FormFields from "types/FormFields";
 
 const registerUser = async (userData: FormFields): Promise<AxiosResponse> => {
-  const response = await axios.post(import.meta.env.USERS_API_URL, userData);
-  return response;
+  console.log("returned response:", import.meta.env.VITE_USERS_ENDPOINT);
+  return await axios.post(import.meta.env.VITE_USERS_ENDPOINT, userData);
 };
 
 export { registerUser };
