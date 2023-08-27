@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-// Libraries
-import axios from "axios";
+// Utils
+import { registerUser } from "services/users";
 
 // Types
 import FormFields from "types/FormFields";
@@ -10,17 +10,19 @@ import FormFields from "types/FormFields";
 import Style from "./Register.module.css";
 
 const Register: React.FC<{}> = (): React.ReactNode => {
+  // Constants
   const intialFormData: FormFields = { username: "", email: "", password: "" };
   const [formData, setFormData] = useState<FormFields>(intialFormData);
 
-  const registerUser = (e: React.FormEvent): void => {
+  // Utils
+  const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    axios.post(import.meta.env.USERS_API_URL, formData);
+    await registerUser(formData);
   };
 
   return (
     <div className={Style.register}>
-      <form onSubmit={(e) => registerUser(e)}>
+      <form onSubmit={(e) => submitHandler(e)}>
         <h2 className={Style.heading}>Register</h2>
         <label htmlFor="username">Username</label>
         <input
