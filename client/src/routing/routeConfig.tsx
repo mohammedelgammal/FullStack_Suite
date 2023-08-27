@@ -2,7 +2,7 @@
 import paths from "./routes";
 
 // Components
-import { Login } from "features";
+import { Login, Register } from "features";
 import { AuthLayout } from "layouts";
 
 // Libraries
@@ -17,6 +17,7 @@ const router = createBrowserRouter([
         path: paths.auth.login,
         element: <Login />,
       },
+      { path: paths.auth.register, element: <Register /> },
     ],
   },
 ]);
