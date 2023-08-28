@@ -11,9 +11,8 @@ usersRoute.post("/", async (req, res) => {
     const { username, email, password } = req.body;
 
     const targetUser = await UserModel.findOne({ username });
-    console.log(targetUser);
     if (targetUser)
-      return res.status(400).json({
+      return res.status(409).json({
         message: "User already exists!",
       });
     const newUser = UserModel({

@@ -1,13 +1,11 @@
 import { useState } from "react";
 
-// Utils
-import { registerUser } from "services/users";
-
 // Types
 import FormFields from "types/FormFields";
 
 // Styles
 import Style from "./Register.module.css";
+import useQuery from "hooks/useQuery";
 
 const Register: React.FC<{}> = (): React.ReactNode => {
   // Constants
@@ -17,7 +15,13 @@ const Register: React.FC<{}> = (): React.ReactNode => {
   // Utils
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    await registerUser(formData);
+    const { isLoading, error, data } = useQuery({
+      url: import.meta.env.VITE_USERS_ENDPOINT,
+      method: "POST",
+      payload: formData,
+    });
+
+    console.log(isLoading, error, data);
   };
 
   return (
