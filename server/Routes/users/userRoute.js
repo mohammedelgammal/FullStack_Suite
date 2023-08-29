@@ -9,7 +9,6 @@ const usersRoute = express.Router();
 usersRoute.post("/", async (req, res) => {
   try {
     const { username, email, password } = req.body;
-
     const targetUser = await UserModel.findOne({ username });
     if (targetUser)
       return res.status(409).json({
