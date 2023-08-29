@@ -12,7 +12,7 @@ interface QueryResponse {
   isLoading?: boolean;
   error?: AxiosError;
   data?: AxiosResponse;
-  executeNow: () => void;
+  executeQuery: () => void;
 }
 
 export type { QueryResponse, Props };

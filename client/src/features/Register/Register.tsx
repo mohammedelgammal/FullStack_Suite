@@ -13,20 +13,18 @@ const Register: React.FC<{}> = (): React.ReactNode => {
   const [formData, setFormData] = useState<FormFields>(initialState);
 
   // Queries
-  const { isLoading, error, data, executeNow } = useQuery({
+  const { isLoading, error, data, executeQuery } = useQuery({
     url: import.meta.env.VITE_USERS_ENDPOINT,
     method: "POST",
     payload: formData,
-    // executeImmediately: false,
+    executeImmediately: false,
   });
 
   // Utils
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    executeNow();
+    executeQuery();
   };
-
-  console.log(isLoading, error, data);
 
   return (
     <div className={Style.register}>

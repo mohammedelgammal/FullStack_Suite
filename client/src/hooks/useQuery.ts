@@ -16,9 +16,9 @@ const useQuery = ({
   const [error, setError] = useState<AxiosError>();
   const [data, setData] = useState<AxiosResponse>();
 
-  const executeNow = () => executeQuery({ url, method, payload });
+  const executeQuery = () => handleApiCall({ url, method, payload });
 
-  const executeQuery = ({ url, method, payload }: Props): void => {
+  const handleApiCall = ({ url, method, payload }: Props): void => {
     setIsLoading(true);
     axios({
       method,
@@ -41,11 +41,10 @@ const useQuery = ({
   };
 
   useEffect(() => {
-    executeImmediately &&
-      executeQuery({ url, method, payload, executeImmediately });
+    executeImmediately && handleApiCall({ url, method, payload });
   }, []);
 
-  return { isLoading, error, data, executeNow };
+  return { isLoading, error, data, executeQuery };
 };
 
 export default useQuery;
