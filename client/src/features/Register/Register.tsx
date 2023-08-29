@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // Types
-import FormFields from "types/FormFields";
+import FormFields from "types/FormFieldsTypes";
 
 // Styles
 import Style from "./Register.module.css";
@@ -9,20 +9,24 @@ import useQuery from "hooks/useQuery";
 
 const Register: React.FC<{}> = (): React.ReactNode => {
   // Constants
-  const intialFormData: FormFields = { username: "", email: "", password: "" };
-  const [formData, setFormData] = useState<FormFields>(intialFormData);
+  const initialState = { username: "", email: "", password: "" };
+  const [formData, setFormData] = useState<FormFields>(initialState);
+
+  // Queries
+  const { isLoading, error, data, executeNow } = useQuery({
+    url: import.meta.env.VITE_USERS_ENDPOINT,
+    method: "POST",
+    payload: formData,
+    // executeImmediately: false,
+  });
 
   // Utils
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    const { isLoading, error, data } = useQuery({
-      url: import.meta.env.VITE_USERS_ENDPOINT,
-      method: "POST",
-      payload: formData,
-    });
-
-    console.log(isLoading, error, data);
+    executeNow();
   };
+
+  console.log(isLoading, error, data);
 
   return (
     <div className={Style.register}>
@@ -33,9 +37,9 @@ const Register: React.FC<{}> = (): React.ReactNode => {
           type="text"
           placeholder="John Doe"
           name="username"
-          value={formData.username}
+          value={formData?.username}
           onChange={(e) =>
-            setFormData({ ...formData, username: e.target.value })
+            setFormData(formData && { ...formData, username: e.target.value })
           }
         />
         <label htmlFor="email">Email</label>
@@ -43,17 +47,19 @@ const Register: React.FC<{}> = (): React.ReactNode => {
           type="email"
           placeholder="john-doe@example.com"
           name="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          value={formData?.email}
+          onChange={(e) =>
+            setFormData(formData && { ...formData, email: e.target.value })
+          }
         />
         <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="password"
           name="password"
-          value={formData.password}
+          value={formData?.password}
           onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
+            setFormData(formData && { ...formData, password: e.target.value })
           }
         />
         <button type="submit">Register</button>

@@ -3,24 +3,23 @@ import { useState, useEffect } from "react";
 // Libraries
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-interface QueryResponse {
-  isLoading: boolean;
-  error?: AxiosError;
-  data?: AxiosResponse;
-}
+// Types
+import { QueryResponse, Props } from "types/useQueryTypes";
 
-interface Props {
-  url: string;
-  method: string;
-  payload?: object;
-}
-
-const useQuery = ({ url, method, payload }: Props): QueryResponse => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+const useQuery = ({
+  url,
+  method,
+  payload,
+  executeImmediately = false,
+}: Props): QueryResponse => {
+  const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<AxiosError>();
   const [data, setData] = useState<AxiosResponse>();
 
-  const handleApiCall = ({ url, method, payload }: Props) => {
+  const executeNow = () => executeQuery({ url, method, payload });
+
+  const executeQuery = ({ url, method, payload }: Props): void => {
+    setIsLoading(true);
     axios({
       method,
       url,
@@ -42,10 +41,11 @@ const useQuery = ({ url, method, payload }: Props): QueryResponse => {
   };
 
   useEffect(() => {
-    handleApiCall({ url, method, payload });
+    executeImmediately &&
+      executeQuery({ url, method, payload, executeImmediately });
   }, []);
 
-  return { isLoading, error, data };
+  return { isLoading, error, data, executeNow };
 };
 
 export default useQuery;

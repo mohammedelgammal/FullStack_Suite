@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Types
-import FormFields from "types/FormFields";
+import FormFields from "types/FormFieldsTypes";
 
 const registerUser = async (userData: FormFields): Promise<void> => {
   const response = await axios
