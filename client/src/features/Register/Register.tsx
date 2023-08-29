@@ -1,11 +1,13 @@
 import { useState } from "react";
 
+// Libraries
+import useFetch from "@mohammedelgammal/usefetch";
+
 // Types
 import FormFields from "types/FormFieldsTypes";
 
 // Styles
 import Style from "./Register.module.css";
-import useQuery from "hooks/useQuery";
 
 const Register: React.FC<{}> = (): React.ReactNode => {
   // Constants
@@ -13,7 +15,7 @@ const Register: React.FC<{}> = (): React.ReactNode => {
   const [formData, setFormData] = useState<FormFields>(initialState);
 
   // Queries
-  const { isLoading, error, data, executeQuery } = useQuery({
+  const { isLoading, error, data, executeQuery } = useFetch({
     url: import.meta.env.VITE_USERS_ENDPOINT,
     method: "POST",
     payload: formData,
