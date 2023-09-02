@@ -1,6 +1,6 @@
 // Libraries
 import useFetch from "@mohammedelgammal/usefetch";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, get, useForm } from "react-hook-form";
 
 // Data
 import inputProps from "data/registerInputProps";
@@ -37,13 +37,10 @@ const Register: React.FC<{}> = (): React.ReactNode => {
     executeImmediately: false,
   });
 
-  console.log("values are: ", getValues());
-
   // Handlers
-  const onSubmit: SubmitHandler<FieldValues> = async (data): Promise<void> => {
-    // await executeQuery();
-    console.log("values are: ", data);
-    // reset();
+  const onSubmit: SubmitHandler<FieldValues> = (): void => {
+    executeQuery();
+    reset();
   };
 
   return (
