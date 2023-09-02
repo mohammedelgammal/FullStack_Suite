@@ -16,14 +16,6 @@ import { ReactComponent as ErrorIcon } from "assets/icons/error_triangle.svg";
 import Style from "./Register.module.css";
 
 const Register: React.FC<{}> = (): React.ReactNode => {
-  // Constants
-  const defaultFormValues = {
-    username: "",
-    email: "",
-    password: "",
-    verifyPassword: "",
-  };
-
   // Hooks
   const {
     register,
@@ -31,27 +23,27 @@ const Register: React.FC<{}> = (): React.ReactNode => {
     formState: { errors },
     getValues,
     reset,
-  } = useForm<FormFields>({
-    defaultValues: defaultFormValues,
-  });
+  } = useForm<FormFields>();
 
   // Queries
   const { isLoading, error, data, executeQuery } = useFetch({
     url: import.meta.env.VITE_USERS_ENDPOINT,
     method: "POST",
     payload: {
-      username: "asffaggg",
-      email: "asfsasf",
-      password: "asdasdasd",
+      username: getValues("username"),
+      email: getValues("email"),
+      password: getValues("password"),
     },
     executeImmediately: false,
   });
 
+  console.log("values are: ", getValues());
+
   // Handlers
-  const onSubmit: SubmitHandler<FieldValues> = async (): Promise<void> => {
-    await executeQuery();
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<FieldValues> = async (data): Promise<void> => {
+    // await executeQuery();
+    console.log("values are: ", data);
+    // reset();
   };
 
   return (
@@ -82,17 +74,19 @@ const Register: React.FC<{}> = (): React.ReactNode => {
           name="password"
         />
         <span>{errors?.password?.message?.toString()}</span>
-        <label htmlFor="verify_password">Verify Password</label>
+        <label htmlFor="confirmPassword">Confirm password</label>
         <input
-          {...register(
-            "verifyPassword",
-            inputProps.verifyPassword(getValues("password"))
-          )}
+          {...register("confirmPassword", {
+            ...inputProps.confirmPassword,
+            validate: (value: string): string | boolean =>
+              value === getValues("password") ||
+              "Passwords you entered do not match",
+          })}
           type="password"
-          placeholder="Verify password"
-          name="verify_password"
+          placeholder="Confirm password"
+          name="confirmPassword"
         />
-        <span>{errors?.verifyPassword?.message?.toString()}</span>
+        <span>{errors?.confirmPassword?.message?.toString()}</span>
         <button type="submit">
           {isLoading ? <LoadingIcon /> : "Register"}
         </button>
@@ -101,7 +95,7 @@ const Register: React.FC<{}> = (): React.ReactNode => {
       {error && (
         <div className={Style.apiSubmitError}>
           <ErrorIcon />
-          <span>{error?.response?.data?.error}</span>
+          <span>{error?.response?.data?.message}</span>
         </div>
       )}
       {data && <div className={Style.success}>{data?.message}</div>}

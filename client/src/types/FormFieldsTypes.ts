@@ -2,7 +2,7 @@ interface FormFields {
   username: string;
   email: string;
   password: string;
-  verifyPassword: string;
+  confirmPassword: string;
 }
 
 export default FormFields;

@@ -1,6 +1,3 @@
-// Types
-import { RegisterOptions } from "react-hook-form";
-
 const requiredMsg = "This field cannot be left blank";
 
 const inputProps = {
@@ -18,11 +15,9 @@ const inputProps = {
   password: {
     required: requiredMsg,
   },
-  verifyPassword: (passwordValue: string): RegisterOptions => ({
-    // required: requiredMsg,
-    validate: (value: string): boolean | string =>
-      value === passwordValue || "The passwords you entered do not match",
-  }),
+  confirmPassword: {
+    required: requiredMsg,
+  },
 };
 
 export default inputProps;

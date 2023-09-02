@@ -25,7 +25,7 @@ usersRoute.post("/", async (req, res) => {
     console.log("Error: ", error);
     return res
       .status(500)
-      .json({ error: "Cannot process your request at this time!" });
+      .json({ message: "Cannot process your request at this time!" });
   }
 });
 
