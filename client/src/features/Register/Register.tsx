@@ -1,6 +1,6 @@
 // Libraries
 import useFetch from "@mohammedelgammal/usefetch";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 // Data
 import inputProps from "data/registerInputProps";
@@ -10,6 +10,7 @@ import FormFields from "types/FormFieldsTypes";
 
 // Icons
 import { ReactComponent as LoadingIcon } from "assets/icons/loading_spinner.svg";
+import { ReactComponent as ErrorIcon } from "assets/icons/error_triangle.svg";
 
 // Styles
 import Style from "./Register.module.css";
@@ -29,6 +30,7 @@ const Register: React.FC<{}> = (): React.ReactNode => {
     handleSubmit,
     formState: { errors },
     getValues,
+    reset,
   } = useForm<FormFields>({
     defaultValues: defaultFormValues,
   });
@@ -37,13 +39,24 @@ const Register: React.FC<{}> = (): React.ReactNode => {
   const { isLoading, error, data, executeQuery } = useFetch({
     url: import.meta.env.VITE_USERS_ENDPOINT,
     method: "POST",
-    payload: getValues(),
+    payload: {
+      username: "asffaggg",
+      email: "asfsasf",
+      password: "asdasdasd",
+    },
     executeImmediately: false,
   });
 
+  // Handlers
+  const onSubmit: SubmitHandler<FieldValues> = async (): Promise<void> => {
+    await executeQuery();
+    console.log(data);
+    reset();
+  };
+
   return (
     <div className={Style.register}>
-      <form onSubmit={handleSubmit(executeQuery)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className={Style.heading}>Register</h2>
         <label htmlFor="username">Username</label>
         <input
@@ -81,9 +94,17 @@ const Register: React.FC<{}> = (): React.ReactNode => {
         />
         <span>{errors?.verifyPassword?.message?.toString()}</span>
         <button type="submit">
-          <LoadingIcon />
+          {isLoading ? <LoadingIcon /> : "Register"}
         </button>
       </form>
+
+      {error && (
+        <div className={Style.apiSubmitError}>
+          <ErrorIcon />
+          <span>{error?.response?.data?.error}</span>
+        </div>
+      )}
+      {data && <div className={Style.success}>{data?.message}</div>}
     </div>
   );
 };

@@ -19,7 +19,7 @@ const inputProps = {
     required: requiredMsg,
   },
   verifyPassword: (passwordValue: string): RegisterOptions => ({
-    required: requiredMsg,
+    // required: requiredMsg,
     validate: (value: string): boolean | string =>
       value === passwordValue || "The passwords you entered do not match",
   }),
