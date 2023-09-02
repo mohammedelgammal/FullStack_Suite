@@ -1,13 +1,15 @@
-import { useForm } from "react-hook-form";
-
 // Libraries
 import useFetch from "@mohammedelgammal/usefetch";
+import { useForm } from "react-hook-form";
 
 // Data
 import inputProps from "data/registerInputProps";
 
 // Types
 import FormFields from "types/FormFieldsTypes";
+
+// Icons
+import { ReactComponent as LoadingIcon } from "assets/icons/loading_spinner.svg";
 
 // Styles
 import Style from "./Register.module.css";
@@ -20,7 +22,6 @@ const Register: React.FC<{}> = (): React.ReactNode => {
     password: "",
     verifyPassword: "",
   };
-  const submitBtn = isLoading ? LoadingIcon : "Register";
 
   // Hooks
   const {
@@ -79,7 +80,9 @@ const Register: React.FC<{}> = (): React.ReactNode => {
           name="verify_password"
         />
         <span>{errors?.verifyPassword?.message?.toString()}</span>
-        <button type="submit">{submitBtn}</button>
+        <button type="submit">
+          <LoadingIcon />
+        </button>
       </form>
     </div>
   );
