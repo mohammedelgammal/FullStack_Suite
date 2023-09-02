@@ -1,74 +1,86 @@
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 // Libraries
-// import useFetch from "@mohammedelgammal/usefetch";
+import useFetch from "@mohammedelgammal/usefetch";
+
+// Data
+import inputProps from "data/registerInputProps";
+
+// Types
+import FormFields from "types/FormFieldsTypes";
 
 // Styles
 import Style from "./Register.module.css";
 
 const Register: React.FC<{}> = (): React.ReactNode => {
   // Constants
+  const defaultFormValues = {
+    username: "",
+    email: "",
+    password: "",
+    verifyPassword: "",
+  };
+  const submitBtn = isLoading ? LoadingIcon : "Register";
+
+  // Hooks
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    getValues,
+  } = useForm<FormFields>({
+    defaultValues: defaultFormValues,
+  });
 
   // Queries
-  // const { isLoading, error, data, executeQuery } = useFetch({
-  //   url: import.meta.env.VITE_USERS_ENDPOINT,
-  //   method: "POST",
-  //   payload: formData,
-  //   executeImmediately: false,
-  // });
-
-  const onSubmit: SubmitHandler<FieldValues> = (data): void => {
-    console.log(data);
-  };
-
-  console.log(errors);
+  const { isLoading, error, data, executeQuery } = useFetch({
+    url: import.meta.env.VITE_USERS_ENDPOINT,
+    method: "POST",
+    payload: getValues(),
+    executeImmediately: false,
+  });
 
   return (
     <div className={Style.register}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(executeQuery)}>
         <h2 className={Style.heading}>Register</h2>
         <label htmlFor="username">Username</label>
         <input
-          {...register("username", {
-            required: "This field cannot be left blank",
-            maxLength: { value: 20, message: "Maximum 20 characters allowed!" },
-          })}
+          {...register("username", inputProps.username)}
           type="text"
           placeholder="John Doe"
           name="username"
         />
+        <span>{errors?.username?.message?.toString()}</span>
         <label htmlFor="email">Email</label>
         <input
-          {...register("email", {
-            required: "This field cannot be left blank",
-          })}
+          {...register("email", inputProps.email)}
           type="email"
           placeholder="john-doe@example.com"
           name="email"
         />
+        <span>{errors?.email?.message?.toString()}</span>
         <label htmlFor="password">Password</label>
         <input
-          {...register("password", {
-            required: "This field cannot be left blank",
-            maxLength: {
-              value: 20,
-              message: "Maximum length 20 characters allowed!",
-            },
-          })}
+          {...register("password", inputProps.password)}
           type="password"
-          placeholder="password"
+          placeholder="Password"
           name="password"
         />
-        <button type="submit">Register</button>
+        <span>{errors?.password?.message?.toString()}</span>
+        <label htmlFor="verify_password">Verify Password</label>
+        <input
+          {...register(
+            "verifyPassword",
+            inputProps.verifyPassword(getValues("password"))
+          )}
+          type="password"
+          placeholder="Verify password"
+          name="verify_password"
+        />
+        <span>{errors?.verifyPassword?.message?.toString()}</span>
+        <button type="submit">{submitBtn}</button>
       </form>
-      <div className={Style.errors}>
-        <span>{errors?.username?.message?.toString()}</span>
-      </div>
     </div>
   );
 };
