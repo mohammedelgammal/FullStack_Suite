@@ -15,4 +15,15 @@ type TodoListProps = {
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 };
 
-export type { Todo, TodoFormProps, TodoListProps };
+enum ButtonEnum {
+  Add = 1,
+  Delete,
+}
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: string | JSX.Element;
+  btnType: ButtonEnum;
+};
+
+export { ButtonEnum };
+export type { Todo, TodoFormProps, TodoListProps, ButtonProps };

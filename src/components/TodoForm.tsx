@@ -1,4 +1,6 @@
-import { TodoFormProps } from "./types";
+import { ButtonEnum, TodoFormProps } from "src/types/types";
+import Style from "./TodoForm.module.css";
+import Button from "./ui/Button";
 
 const TodoForm = ({ todo, setTodo, setTodos }: TodoFormProps) => {
   const handleTodoChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -16,10 +18,17 @@ const TodoForm = ({ todo, setTodo, setTodos }: TodoFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input value={todo} type="text" onChange={handleTodoChange} />
-        <button disabled={!todo.length}>Add</button>
+    <form className={Style.form} onSubmit={handleSubmit}>
+      <div className={Style.inputContainer}>
+        <input
+          placeholder="Place todo here..."
+          value={todo}
+          type="text"
+          onChange={handleTodoChange}
+        />
+        <Button btnType={ButtonEnum.Add} disabled={!todo.length}>
+          Add +
+        </Button>
       </div>
     </form>
   );

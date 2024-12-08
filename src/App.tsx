@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Todo } from "./types";
-import TodoForm from "./TodoForm";
-import Style from "./App.module.css";
-import TodoList from "./TodoList";
+import { Todo } from "./types/types";
+import TodoForm from "src/components/TodoForm";
+import TodoList from "src/components/TodoList";
 
 const App = (): JSX.Element => {
   // Global state
@@ -19,7 +18,6 @@ const App = (): JSX.Element => {
 
   return (
     <>
-      <h1 className={Style.heading}>This is heading</h1>
       <TodoForm todo={todo} setTodo={setTodo} setTodos={setTodos} />
       <TodoList todos={todos} setTodos={setTodos} />
     </>
