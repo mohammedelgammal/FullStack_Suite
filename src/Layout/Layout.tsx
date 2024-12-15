@@ -3,9 +3,11 @@ import { Header, Footer } from "src/Layout";
 
 const Layout = () => {
   return (
-    <div className="relative">
+    <div className="min-h-screen flex flex-col items-center">
       <Header />
-      <Outlet />
+      <div className="flex-auto">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
