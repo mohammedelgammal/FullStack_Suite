@@ -1,6 +1,7 @@
 import Creatable from "react-select/creatable";
 import { OptionsType, ThemeType } from "src/types";
 import Button from "./ui/Button";
+import { Link } from "react-router-dom";
 
 const options: OptionsType = [];
 
@@ -18,7 +19,7 @@ const CrateNote = () => {
         <div className="flex items-center mb-5 gap-5">
           <div className="flex flex-col gap-1">
             <label htmlFor="title">Title</label>
-            <input className="p-1" name="title" type="text" />
+            <input className="p-1" name="title" type="text" required />
           </div>
           <div className="flex flex-col gap-1">
             <label htmlFor="tags">Tags</label>
@@ -27,19 +28,24 @@ const CrateNote = () => {
               name="tags"
               isMulti
               options={options}
+              required
             />
           </div>
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="body">Body</label>
-          <textarea rows={10} name="body" />
+          <textarea rows={10} name="body" required />
         </div>
-        <Button type="submit" theme={ThemeType.PRIMARY}>
-          Save
-        </Button>
-        <Button disabled type="button" theme={ThemeType.SECONDARY}>
-          Cancel
-        </Button>
+        <div className="flex gap-2 mt-5 justify-end">
+          <Button type="submit" theme={ThemeType.PRIMARY}>
+            Save
+          </Button>
+          <Link to="..">
+            <Button type="button" theme={ThemeType.SECONDARY}>
+              Cancel
+            </Button>
+          </Link>
+        </div>
       </form>
     </div>
   );
