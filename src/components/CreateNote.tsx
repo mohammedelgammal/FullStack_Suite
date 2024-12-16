@@ -1,15 +1,20 @@
 import Creatable from "react-select/creatable";
-import { OptionsType } from "src/types";
+import { OptionsType, ThemeType } from "src/types";
+import Button from "./ui/Button";
 
 const options: OptionsType = [];
 
 const CrateNote = () => {
+  const handleCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="flex flex-col justify-center gap-5">
       <h1 className="text-slate-700 font-semibold font-serif text-3xl mt-10 mb-5">
         New Note
       </h1>
-      <form>
+      <form onSubmit={handleCreateNote}>
         <div className="flex items-center mb-5 gap-5">
           <div className="flex flex-col gap-1">
             <label htmlFor="title">Title</label>
@@ -29,6 +34,12 @@ const CrateNote = () => {
           <label htmlFor="body">Body</label>
           <textarea rows={10} name="body" />
         </div>
+        <Button type="submit" theme={ThemeType.PRIMARY}>
+          Save
+        </Button>
+        <Button disabled type="button" theme={ThemeType.SECONDARY}>
+          Cancel
+        </Button>
       </form>
     </div>
   );
