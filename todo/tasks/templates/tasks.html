@@ -1,6 +1,15 @@
 <h1>Tasks:</h1>
+
+<h2>Create task</h2>
+
+<form method="POST" action="/">
+  <label for="title">Task title</label>
+  {% csrf_token %} {{ TaskForm.title }}
+  <button type="submit">create</button>
+</form>
+
 {% for task in tasks %}
 
-<p>{{task}}</p>
+<p>{{ forloop.counter }}: {{task.title}}</p>
 
 {% endfor %}
