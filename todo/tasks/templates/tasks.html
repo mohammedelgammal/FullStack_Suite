@@ -12,4 +12,12 @@
 
 <p>{{ forloop.counter }}: {{task.title}}</p>
 
+<a href="{% url 'update-task' task.id %}">
+  <button>Update</button>
+</a>
+
+<a href="{% url 'delete-task' task.id %}">
+  <button>Delete</button>
+</a>
+
 {% endfor %}
