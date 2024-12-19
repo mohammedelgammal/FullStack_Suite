@@ -1,5 +1,18 @@
 {% extends 'webapp/base.html' %}
 
+<!-- content - ignore formatting -->
 {% block content %}
-<h1>Hello Homepage</h1>
+<div class="text-center">
+  <br /><br /><br />
+  <h1>Project Y - CRM As it should be!</h1>
+  <hr />
+  <h5>Keep track of your records effectively!</h5>
+  <br /><br />
+  <a class="btn btn-secondary" type="button" href="{% url 'login' %}">
+    Login
+  </a>
+  <a class="btn btn-primary" type="button" href="{% url 'register' %}">
+    Create your account
+  </a>
+</div>
 {% endblock %}
