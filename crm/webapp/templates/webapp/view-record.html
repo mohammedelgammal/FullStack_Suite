@@ -5,8 +5,9 @@
     <div>
         <br>
         <h3 class="text-center">View {{ RecordName }}'s Record:</h3>
+        <br>
     </div>
-    <div class="d-flex justify-content-center align-items-center mb-5">
+    <div class="d-flex flex-column gap-2 justify-content-center align-items-center mb-5">
         <div class="card profile-card">
             <img class="avatar m-5"
                  src="{% static 'imgs/user-avatar.png' %}"
@@ -45,6 +46,13 @@
                     {{ RecordDetails.country }}
                 </li>
             </ul>
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-secondary" href="{% url 'dashboard' %}">Return</a>
+                <a class="btn btn-info"
+                   href="{% url 'update-record' RecordDetails.id %}">Update</a>
+                <a class="btn btn-danger"
+                   href="{% url 'delete-record' RecordDetails.id %}">Delete</a>
+            </div>
         </div>
     </div>
 {% endblock content %}
