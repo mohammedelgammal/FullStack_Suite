@@ -56,6 +56,22 @@ def create_record(request):
     return render(request, "webapp/create-record.html", context)
 
 
+@decorators.login_required(login_url="login")
+def update_record(request, pk):
+    record = Record.objects.get(id=pk)
+    if record is None:
+        return redirect("dashboard")
+    form = CreateRecordForm(instance=record)
+    if request.method == "POST":
+        form = CreateRecordForm(request.POST, instance=record)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+    record_name = f"{record.first_name} {record.last_name}"
+    context = {"UpdateRecordForm": form, "RecordName": record_name}
+    return render(request, "webapp/update-record.html", context)
+
+
 def user_logout(request):
     logout(request)
     return redirect("login")

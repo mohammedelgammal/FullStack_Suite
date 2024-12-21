@@ -10,7 +10,7 @@
   <br />
   <br />
   <div class="container shadow border p-4 rounded border form-layout">
-    <form action="" method="POST">
+    <form method="POST">
       {% csrf_token %}
       <!-- register form -->
       {{ RegisterUserForm|crispy }}
