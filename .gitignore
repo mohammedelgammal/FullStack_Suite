@@ -14,7 +14,7 @@ node_modules
 dist
 dist-ssr
 *.local
-
+.djlintrc
 
 # Editor directories and files
 .vscode/*
