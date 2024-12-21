@@ -1,4 +1,5 @@
 {% extends "webapp/base.html" %}
+{% load static %}
 <!-- ignore formatting -->
 
 {% block content %}
@@ -13,6 +14,7 @@
         <thead>
           <tr class="table-success">
             <th scope="col">#</th>
+            <th scope="col">Avatar</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
@@ -27,6 +29,11 @@
           {% for record in ClientsRecords %}
             <tr class="table-light">
               <th scope="row">{{ forloop.counter }}</th>
+              <td>
+                <img class="small-avatar"
+                     src="{% static 'imgs/user-avatar.png' %}"
+                     alt="avatar" />
+              </td>
               <td>{{ record.first_name }} {{ record.last_name }}</td>
               <td>{{ record.email }}</td>
               <td>{{ record.phone }}</td>
@@ -37,6 +44,7 @@
               <td>
                 <a class="btn btn-info" href="{% url 'update-record' record.id %}">Update</a>
                 <a class="btn btn-danger" href="{% url 'delete-record' record.id %}">Delete</a>
+                <a class="btn btn-success" href="{% url 'view-record' record.id %}">View</a>
               </td>
             </tr>
           {% endfor %}

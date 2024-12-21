@@ -80,6 +80,16 @@ def delete_record(request, pk):
     return redirect("dashboard")
 
 
+@decorators.login_required(login_url="login")
+def view_record(request, pk):
+    record = Record.objects.get(id=pk)
+    if record is None:
+        return redirect("dashboard")
+    record_name = f"{record.first_name} {record.last_name}"
+    context = {"RecordDetails": record, "RecordName": record_name}
+    return render(request, "webapp/view-record.html", context)
+
+
 def user_logout(request):
     logout(request)
     return redirect("login")

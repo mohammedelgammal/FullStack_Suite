@@ -1,4 +1,4 @@
 {
-  "ignore": "H029",
+  "ignore": "H029,H006",
   "blank_line_before_tag": "block"
 }
