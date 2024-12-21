@@ -35,7 +35,8 @@
               <td>{{ record.province }}</td>
               <td>{{ record.country }}</td>
               <td>
-                <a class="btn btn-info" href="{% url 'update-record' user.id %}">Update</a>
+                <a class="btn btn-info" href="{% url 'update-record' record.id %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'delete-record' record.id %}">Delete</a>
               </td>
             </tr>
           {% endfor %}

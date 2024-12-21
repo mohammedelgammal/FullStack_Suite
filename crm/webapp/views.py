@@ -72,6 +72,14 @@ def update_record(request, pk):
     return render(request, "webapp/update-record.html", context)
 
 
+@decorators.login_required(login_url="login")
+def delete_record(request, pk):
+    record = Record.objects.get(id=pk)
+    if record is not None:
+        record.delete()
+    return redirect("dashboard")
+
+
 def user_logout(request):
     logout(request)
     return redirect("login")
