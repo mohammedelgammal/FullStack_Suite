@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, decorators
-
+from .models import Record
 
 from .forms import RegisterUserForm, LoginUserForm
 
@@ -11,7 +11,6 @@ def home(request):
 
 def user_register(request):
     form = RegisterUserForm()
-
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         if form.is_valid:
@@ -21,6 +20,7 @@ def user_register(request):
     return render(request, "webapp/register.html", context)
 
 
+@decorators.login_required(login_url="login")
 def user_login(request):
     form = LoginUserForm()
     if request.method == "POST":
@@ -38,7 +38,10 @@ def user_login(request):
 
 @decorators.login_required(login_url="login")
 def dashboard(request):
-    return render(request, "webapp/dashboard.html")
+    records = Record.objects.all()
+    context = {"ClientsRecords": records}
+
+    return render(request, "webapp/dashboard.html", context)
 
 
 def user_logout(request):

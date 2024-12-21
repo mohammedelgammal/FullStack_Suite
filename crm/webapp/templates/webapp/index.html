@@ -8,11 +8,19 @@
   <hr />
   <h5>Keep track of your records effectively!</h5>
   <br /><br />
-  <a class="btn btn-secondary" type="button" href="{% url 'login' %}">
-    Login
+  {% if not user.is_authenticated %}
+  <div>
+    <a class="btn btn-secondary" type="button" href="{% url 'login' %}">
+      Login
+    </a>
+    <a class="btn btn-primary" type="button" href="{% url 'register' %}">
+      Create your account
+    </a>
+  </div>
+  {% else %}
+  <a class="btn btn-primary" type="button" href="{% url 'dashboard' %}">
+    Go to Dashboard
   </a>
-  <a class="btn btn-primary" type="button" href="{% url 'register' %}">
-    Create your account
-  </a>
+  {% endif %}
 </div>
 {% endblock %}
