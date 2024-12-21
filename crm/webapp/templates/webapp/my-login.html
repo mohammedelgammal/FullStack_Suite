@@ -1,34 +1,27 @@
-{% extends 'webapp/base.html' %}
+{% extends "webapp/base.html" %}
 <!-- crispy tags -->
 {% load crispy_forms_tags %}
-
 <!-- ignore formatting -->
 {% block content %}
-
-<br />
-
-<div class="text-center">
-  <h1>Login to your account</h1>
-  <h5>Discover more about our new features!</h5>
-</div>
-
-<br />
-<br />
-
-<div class="container shadow border p-4 rounded border form-layout">
-  <form action="" method="POST">
-    {% csrf_token %}
-    <!-- login form -->
-    {{ LoginUserForm|crispy }}
-    <br />
-    <button class="w-100 btn btn-primary" type="submit">Login</button>
-  </p>
-</form>
-<hr />
-
-<p>
-  Don't have an account! <a href="{% url 'register' %}">Create One</a>
-</div>
-
-<!-- ignore -->
-{% endblock %}
+  <br />
+  <div class="text-center">
+    <h1>Login to your account</h1>
+    <h5>Discover more about our new features!</h5>
+  </div>
+  <br />
+  <br />
+  <div class="container shadow border p-4 rounded border form-layout">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <!-- login form -->
+      {{ LoginUserForm|crispy }}
+      <br />
+      <button class="w-100 btn btn-primary" type="submit">Login</button>
+    </form>
+    <hr />
+    <div>
+      Don't have an account! <a href="{% url 'register' %}">Create One</a>
+    </div>
+  </div>
+  <!-- ignore -->
+{% endblock content %}

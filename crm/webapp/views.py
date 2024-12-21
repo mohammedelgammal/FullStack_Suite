@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, decorators
-from .models import Record
 
-from .forms import RegisterUserForm, LoginUserForm
+from .models import Record
+from .forms import RegisterUserForm, LoginUserForm, CreateRecordForm
 
 
 def home(request):
@@ -13,19 +13,18 @@ def user_register(request):
     form = RegisterUserForm()
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             return redirect("login")
     context = {"RegisterUserForm": form}
     return render(request, "webapp/register.html", context)
 
 
-@decorators.login_required(login_url="login")
 def user_login(request):
     form = LoginUserForm()
     if request.method == "POST":
         form = LoginUserForm(request, request.POST)
-        if form.is_valid:
+        if form.is_valid():
             username = request.POST.get("username")
             password = request.POST.get("password")
             user = authenticate(request, username=username, password=password)
@@ -42,6 +41,19 @@ def dashboard(request):
     context = {"ClientsRecords": records}
 
     return render(request, "webapp/dashboard.html", context)
+
+
+@decorators.login_required(login_url="login")
+def create_record(request):
+    form = CreateRecordForm()
+    if request.method == "POST":
+        form = CreateRecordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+
+    context = {"CreateRecordForm": form}
+    return render(request, "webapp/create-record.html", context)
 
 
 def user_logout(request):

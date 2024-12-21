@@ -1,0 +1,15 @@
+{% extends "webapp/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <br>
+    <br>
+    <h3 class="text-center">Create new Client Record</h3>
+    <hr />
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ CreateRecordForm|crispy }}
+        <hr>
+        <button class="w-100 btn btn-primary" type="submit">Create Record</button>
+    </form>
+{% endblock content %}
