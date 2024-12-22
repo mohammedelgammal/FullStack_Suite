@@ -15,7 +15,9 @@
     <form method="POST">
       {% csrf_token %}
       <!-- login form -->
-      {{ LoginUserForm|crispy }}
+      {{ LoginUserForm.username|as_crispy_field }}
+      <br>
+      {{ LoginUserForm.password|as_crispy_field }}
       <br />
       <button class="w-100 btn btn-primary" type="submit">
         Login &nbsp; <i class="fa-solid fa-key"></i>

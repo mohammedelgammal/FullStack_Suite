@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="CRM Application">
     <meta name="keywords" content="crm">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <title>
+
       {% block title %}
       {% endblock title %}
     </title>
@@ -17,9 +19,24 @@
   <body>
     {% include "webapp/navbar.html" %}
     <div class="container">
+      {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div class="alert alert-success float-end" role="alert">
+            <i class="fa-solid fa-check"></i> &nbsp;
+            {{ message }}
+          </div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+          <div class="alert alert-info float-end" role="alert">
+            <i class="fa-solid fa-exclamation"></i> &nbsp;
+            {{ message }}
+          </div>
+        {% endif %}
+      {% endfor %}
+
       {% block content %}
       {% endblock content %}
     </div>
+    <script src="{% static 'js/app.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

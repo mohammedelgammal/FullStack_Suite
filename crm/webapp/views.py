@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, decorators
+from django.contrib import messages
 
 from .models import Record
 from .forms import RegisterUserForm, LoginUserForm, CreateRecordForm
@@ -15,6 +16,7 @@ def user_register(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Your account was created successfully!")
             return redirect("login")
     context = {"RegisterUserForm": form}
     return render(request, "webapp/register.html", context)
@@ -50,6 +52,7 @@ def create_record(request):
         form = CreateRecordForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "New record was created successfully!")
             return redirect("dashboard")
 
     context = {"CreateRecordForm": form}
@@ -66,6 +69,7 @@ def update_record(request, pk):
         form = CreateRecordForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
+            messages.success(request, "Record was updated successfully!")
             return redirect("dashboard")
     record_name = f"{record.first_name} {record.last_name}"
     context = {"UpdateRecordForm": form, "RecordName": record_name}
@@ -77,6 +81,7 @@ def delete_record(request, pk):
     record = Record.objects.get(id=pk)
     if record is not None:
         record.delete()
+        messages.info(request, "Record was deleted successfully!")
     return redirect("dashboard")
 
 
@@ -92,4 +97,5 @@ def view_record(request, pk):
 
 def user_logout(request):
     logout(request)
+    messages.info(request, "Logout was successful!")
     return redirect("login")
