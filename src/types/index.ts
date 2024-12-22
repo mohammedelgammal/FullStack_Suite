@@ -15,5 +15,14 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
 }
 
-export type { OptionType, OptionsType, ButtonType };
+type CardProps = {
+  title: string;
+  tags?: string[];
+};
+
+type TagProps = {
+  title: string;
+};
+
+export type { OptionType, OptionsType, ButtonType, CardProps, TagProps };
 export { ThemeType };
