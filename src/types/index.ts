@@ -12,6 +12,7 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   theme: ThemeType;
   children?: React.JSX.Element | string;
   props?: React.ButtonHTMLAttributes<HTMLButtonElement>[];
+  href?: string;
 }
 
 export type { OptionType, OptionsType, ButtonType };

@@ -8,6 +8,7 @@ const options: OptionsType = [];
 const CrateNote = () => {
   const handleCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
   };
 
   return (

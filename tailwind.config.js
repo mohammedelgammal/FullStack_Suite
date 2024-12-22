@@ -6,6 +6,9 @@ export default {
       scale: {
         95: "0.95",
       },
+      padding: {
+        '1.75': "0.450rem",
+      },
     },
   },
   plugins: [],
