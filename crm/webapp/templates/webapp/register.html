@@ -1,6 +1,7 @@
 {% extends "webapp/base.html" %}
 {% load crispy_forms_tags %}
 <!-- ignore formatting -->
+
 {% block content %}
   <br />
   <div class="text-center">
@@ -15,7 +16,14 @@
       <!-- register form -->
       {{ RegisterUserForm|crispy }}
       <br />
-      <button class="w-100 btn btn-primary" type="submit">Create</button>
+      <div class="d-flex gap-2">
+        <button class="w-100 btn btn-primary" type="submit">
+          Create Account &nbsp; <i class="fa-solid fa-user-check"></i>
+        </button>
+        <a href="{% url 'home' %}" class="btn btn-secondary px-4" type="button">
+          <i class="fa-solid fa-house"></i>
+        </a>
+      </div>
     </form>
     <hr />
     <div>

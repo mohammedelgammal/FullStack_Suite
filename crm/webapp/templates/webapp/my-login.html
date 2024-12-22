@@ -2,6 +2,7 @@
 <!-- crispy tags -->
 {% load crispy_forms_tags %}
 <!-- ignore formatting -->
+
 {% block content %}
   <br />
   <div class="text-center">
@@ -16,7 +17,9 @@
       <!-- login form -->
       {{ LoginUserForm|crispy }}
       <br />
-      <button class="w-100 btn btn-primary" type="submit">Login</button>
+      <button class="w-100 btn btn-primary" type="submit">
+        Login &nbsp; <i class="fa-solid fa-key"></i>
+      </button>
     </form>
     <hr />
     <div>
