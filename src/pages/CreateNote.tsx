@@ -10,21 +10,36 @@ const CrateNote = () => {
     value: string;
   };
 
+  type Note = {
+    title: string;
+    body: string;
+    options: OptionType[];
+  };
+
   const [options, setOptions] = useState<OptionType[]>([]);
   const [formData, setFormData] = useState<CreateNoteFormType>({
     title: "",
     body: "",
   });
 
-  const handleCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateNote = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    localStorage.setItem(
-      "notes",
-      JSON.stringify({
-        ...formData,
-        options,
-      })
-    );
+    const getCurrentNotes: () => Note[] = (): Note[] => {
+      const currentNotes: string | null = localStorage.getItem("notes");
+      if (currentNotes) return JSON.parse(currentNotes);
+      return [];
+    };
+    const notes: Note[] = getCurrentNotes();
+    const newNote: Note = {
+      title: formData.title,
+      body: formData.body,
+      options,
+    };
+
+    localStorage.setItem("notes", JSON.stringify([...notes, newNote]));
+    if (notes) {
+      console.log(JSON.stringify(localStorage!.getItem("notes")));
+    }
   };
 
   return (
