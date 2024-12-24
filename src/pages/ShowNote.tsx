@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { Button } from "src/common/ui";
 import { ThemeType } from "src/types";
 import { getAvailableNotes } from "src/utils/helpers";
@@ -6,10 +6,10 @@ import { getAvailableNotes } from "src/utils/helpers";
 const ShowNote = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const notes = getAvailableNotes(),
-    note = notes.find((n) => n.id.toString() == params.id);
+  const notes = getAvailableNotes();
+  const note = notes.find((n) => n.id.toString() == params.id);
 
-  const handleDeleteNote = (id: number) => {
+  const handleDeleteNote = (id: number): void => {
     const notes = getAvailableNotes();
     const filteredNotes = notes.filter((note) => note.id !== id);
     localStorage.setItem("notes", JSON.stringify(filteredNotes));
@@ -27,7 +27,9 @@ const ShowNote = () => {
         >
           Delete
         </Button>
-        <Button theme={ThemeType.PRIMARY}>Edit</Button>
+        <Link to={`/notes/${note.id}/edit`}>
+          <Button theme={ThemeType.PRIMARY}>Edit</Button>
+        </Link>
         <Button href=".." theme={ThemeType.SECONDARY}>
           Return
         </Button>

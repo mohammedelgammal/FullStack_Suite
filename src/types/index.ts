@@ -37,5 +37,15 @@ type TagProps = {
   title: string;
 };
 
-export type { ButtonType, CardProps, OptionType, Note, TagProps, NoteFormData };
+type SetOptionsStateType = React.Dispatch<React.SetStateAction<OptionType[]>>;
+
+export type {
+  ButtonType,
+  CardProps,
+  OptionType,
+  Note,
+  TagProps,
+  NoteFormData,
+  SetOptionsStateType,
+};
 export { ThemeType };

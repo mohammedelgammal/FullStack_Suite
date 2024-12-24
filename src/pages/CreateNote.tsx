@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { MultiValue } from "react-select";
 import Creatable from "react-select/creatable";
 import { Button } from "src/common/ui";
-import { getAvailableOptions } from "src/utils/helpers";
+import { getAvailableOptions, handleCreateOption } from "src/utils/helpers";
 import { Note, NoteFormData, OptionType, ThemeType } from "src/types";
+import { MultiValue } from "react-select";
 
 const initialFormData: NoteFormData = {
   id: 0,
@@ -52,17 +51,6 @@ const CrateNote = () => {
     setOptions(newTags);
   };
 
-  const handleCreateOption = (option: string): void => {
-    const newOption: OptionType = { label: option, value: option };
-    const localOptions: string | null = localStorage.getItem("tags");
-    if (!localOptions)
-      return localStorage.setItem("tags", JSON.stringify([newOption]));
-    const options: OptionType[] = JSON.parse(localOptions);
-    for (let opt of options) if (opt.label == option) return;
-    localStorage.setItem("tags", JSON.stringify([...options, newOption]));
-    setOptions((prevOptions) => [...prevOptions, newOption]);
-  };
-
   return (
     <div className="flex flex-col gap-5 p-6">
       <h1 className="text-slate-700 font-semibold font-serif text-3xl mb-5">
@@ -96,7 +84,9 @@ const CrateNote = () => {
               options={getAvailableOptions()}
               required
               value={options}
-              onCreateOption={handleCreateOption}
+              onCreateOption={(option) =>
+                handleCreateOption(option, setOptions)
+              }
               onChange={handleChangeSelect}
             />
           </div>
@@ -122,11 +112,9 @@ const CrateNote = () => {
           <Button type="submit" theme={ThemeType.PRIMARY}>
             Save
           </Button>
-          <Link to="..">
-            <Button type="button" theme={ThemeType.SECONDARY}>
-              Cancel
-            </Button>
-          </Link>
+          <Button href=".." type="button" theme={ThemeType.SECONDARY}>
+            Cancel
+          </Button>
         </div>
       </form>
     </div>
