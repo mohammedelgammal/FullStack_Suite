@@ -1,35 +1,48 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { MultiValue } from "react-select";
 import Creatable from "react-select/creatable";
 import { Button } from "src/common/ui";
 import { CreateNoteFormType, ThemeType } from "src/types";
 
+type OptionType = {
+  label: string;
+  value: string;
+};
+
+type Note = {
+  title: string;
+  body: string;
+  options: OptionType[];
+};
+
+const initialFormData: CreateNoteFormType = {
+  title: "",
+  body: "",
+};
+
 const CrateNote = () => {
-  type OptionType = {
-    label: string;
-    value: string;
+  const getAvailableOptions = (): OptionType[] => {
+    const localOptions: string | null = localStorage.getItem("tags");
+    if (!localOptions) return [];
+    return JSON.parse(localOptions);
   };
-
-  type Note = {
-    title: string;
-    body: string;
-    options: OptionType[];
-  };
-
   const [options, setOptions] = useState<OptionType[]>([]);
-  const [formData, setFormData] = useState<CreateNoteFormType>({
-    title: "",
-    body: "",
-  });
+  const [formData, setFormData] = useState<CreateNoteFormType>(initialFormData);
+
+  const navigate = useNavigate();
 
   const handleCreateNote = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
     const getCurrentNotes: () => Note[] = (): Note[] => {
       const currentNotes: string | null = localStorage.getItem("notes");
       if (currentNotes) return JSON.parse(currentNotes);
       return [];
     };
     const notes: Note[] = getCurrentNotes();
+
     const newNote: Note = {
       title: formData.title,
       body: formData.body,
@@ -37,9 +50,30 @@ const CrateNote = () => {
     };
 
     localStorage.setItem("notes", JSON.stringify([...notes, newNote]));
-    if (notes) {
-      console.log(JSON.stringify(localStorage!.getItem("notes")));
-    }
+
+    setFormData(initialFormData);
+    setOptions([]);
+
+    navigate(-1);
+  };
+
+  const handleChangeSelect = (tags: MultiValue<OptionType>): void => {
+    const newTags: OptionType[] = tags.map((tag) => ({
+      label: tag.label,
+      value: tag.value,
+    }));
+    setOptions(newTags);
+  };
+
+  const handleCreateOption = (option: string): void => {
+    const newOption: OptionType = { label: option, value: option };
+    const localOptions: string | null = localStorage.getItem("tags");
+    if (!localOptions)
+      return localStorage.setItem("tags", JSON.stringify([newOption]));
+    const options: OptionType[] = JSON.parse(localOptions);
+    for (let opt of options) if (opt.label == option) return;
+    localStorage.setItem("tags", JSON.stringify([...options, newOption]));
+    setOptions((prevOptions) => [...prevOptions, newOption]);
   };
 
   return (
@@ -57,6 +91,7 @@ const CrateNote = () => {
               type="text"
               placeholder="Title..."
               required
+              value={formData.title}
               onChange={(e) =>
                 setFormData((prevData) => ({
                   ...prevData,
@@ -71,16 +106,11 @@ const CrateNote = () => {
               className="min-w-96"
               name="tags"
               isMulti
-              options={options}
+              options={getAvailableOptions()}
               required
-              onChange={(tags) =>
-                setOptions(
-                  tags.map((tag) => ({
-                    label: tag.label,
-                    value: tag.value,
-                  }))
-                )
-              }
+              value={options}
+              onCreateOption={handleCreateOption}
+              onChange={handleChangeSelect}
             />
           </div>
         </div>
@@ -92,6 +122,7 @@ const CrateNote = () => {
             name="body"
             placeholder="Body goes here..."
             required
+            value={formData.body}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
