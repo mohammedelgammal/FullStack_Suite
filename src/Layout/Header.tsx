@@ -1,4 +1,4 @@
-import Button from "src/components/ui/Button";
+import Button from "src/common/ui/Button";
 import { ThemeType } from "src/types";
 
 const Header = () => {

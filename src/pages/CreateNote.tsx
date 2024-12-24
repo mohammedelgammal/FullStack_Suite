@@ -1,13 +1,30 @@
-import Creatable from "react-select/creatable";
-import { OptionsType, ThemeType } from "src/types";
-import Button from "./ui/Button";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-const options: OptionsType = [];
+import Creatable from "react-select/creatable";
+import { Button } from "src/common/ui";
+import { CreateNoteFormType, ThemeType } from "src/types";
 
 const CrateNote = () => {
+  type OptionType = {
+    label: string;
+    value: string;
+  };
+
+  const [options, setOptions] = useState<OptionType[]>([]);
+  const [formData, setFormData] = useState<CreateNoteFormType>({
+    title: "",
+    body: "",
+  });
+
   const handleCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    localStorage.setItem(
+      "notes",
+      JSON.stringify({
+        ...formData,
+        options,
+      })
+    );
   };
 
   return (
@@ -25,6 +42,12 @@ const CrateNote = () => {
               type="text"
               placeholder="Title..."
               required
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  title: e.target!.value,
+                }))
+              }
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -35,6 +58,14 @@ const CrateNote = () => {
               isMulti
               options={options}
               required
+              onChange={(tags) =>
+                setOptions(
+                  tags.map((tag) => ({
+                    label: tag.label,
+                    value: tag.value,
+                  }))
+                )
+              }
             />
           </div>
         </div>
@@ -46,6 +77,12 @@ const CrateNote = () => {
             name="body"
             placeholder="Body goes here..."
             required
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                body: e.target!.value,
+              }))
+            }
           />
         </div>
         <div className="flex gap-2 mt-5 justify-end">

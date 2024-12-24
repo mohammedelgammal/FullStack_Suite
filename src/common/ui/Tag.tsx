@@ -1,6 +1,4 @@
-import { TagProps } from "src/types";
-
-const Tag = ({ title }: TagProps) => {
+const Tag = ({ title }: { title: string }) => {
   return (
     <div className="bg-blue-400 p-1 text-sm text-white rounded ">
       <span className="">{title}</span>

@@ -1,12 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "src/Layout";
-import {
-  Home,
-  CreateNote,
-  ShowNote,
-  EditNote,
-  ErrorPage,
-} from "src/components";
+import { Home, CreateNote, ShowNote, EditNote, ErrorPage } from "src/pages";
 
 const App = () => {
   return (

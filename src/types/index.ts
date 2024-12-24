@@ -1,6 +1,3 @@
-type OptionType = { value: string; label: string };
-type OptionsType = Array<OptionType>;
-
 enum ThemeType {
   PRIMARY,
   SECONDARY,
@@ -20,9 +17,10 @@ type CardProps = {
   tags?: string[];
 };
 
-type TagProps = {
+type CreateNoteFormType = {
   title: string;
+  body: string;
 };
 
-export type { OptionType, OptionsType, ButtonType, CardProps, TagProps };
+export type { ButtonType, CardProps, CreateNoteFormType };
 export { ThemeType };
