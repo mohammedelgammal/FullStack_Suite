@@ -5,22 +5,17 @@ import { MultiValue } from "react-select";
 import Creatable from "react-select/creatable";
 import { Button } from "src/common/ui";
 import { getAvailableOptions } from "src/utils/helpers";
-import { CreateNoteFormType, OptionType, ThemeType } from "src/types";
+import { Note, NoteFormData, OptionType, ThemeType } from "src/types";
 
-type Note = {
-  title: string;
-  body: string;
-  options: OptionType[];
-};
-
-const initialFormData: CreateNoteFormType = {
+const initialFormData: NoteFormData = {
+  id: 0,
   title: "",
   body: "",
 };
 
 const CrateNote = () => {
   const [options, setOptions] = useState<OptionType[]>([]);
-  const [formData, setFormData] = useState<CreateNoteFormType>(initialFormData);
+  const [formData, setFormData] = useState<NoteFormData>(initialFormData);
 
   const navigate = useNavigate();
 
@@ -35,6 +30,7 @@ const CrateNote = () => {
     const notes: Note[] = getCurrentNotes();
 
     const newNote: Note = {
+      id: notes.length + 1,
       title: formData.title,
       body: formData.body,
       options,
@@ -86,7 +82,7 @@ const CrateNote = () => {
               onChange={(e) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  title: e.target!.value,
+                  title: e.target.value,
                 }))
               }
             />
@@ -117,7 +113,7 @@ const CrateNote = () => {
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
-                body: e.target!.value,
+                body: e.target.value,
               }))
             }
           />

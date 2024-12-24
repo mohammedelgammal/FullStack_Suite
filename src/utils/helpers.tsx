@@ -1,4 +1,4 @@
-import { OptionType } from "src/types";
+import { Note, OptionType } from "src/types";
 
 const getAvailableOptions = (): OptionType[] => {
   const localOptions: string | null = localStorage.getItem("tags");
@@ -6,4 +6,11 @@ const getAvailableOptions = (): OptionType[] => {
   return JSON.parse(localOptions);
 };
 
-export { getAvailableOptions };
+const getAvailableNotes = (): Note[] => {
+  const localNotes = localStorage.getItem("notes");
+  if (!localNotes) return [];
+  const notes = JSON.parse(localNotes);
+  return notes;
+};
+
+export { getAvailableOptions, getAvailableNotes };

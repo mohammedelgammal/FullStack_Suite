@@ -1,16 +1,9 @@
 import CreatableSelect from "react-select/creatable";
 import { Card } from "src/common/ui";
 import { Header } from "src/Layout";
-import { Note } from "src/types";
-import { getAvailableOptions } from "src/utils/helpers";
+import { getAvailableOptions, getAvailableNotes } from "src/utils/helpers";
 
 const Home = () => {
-  const getAvailableNotes = (): Note[] => {
-    const localNotes = localStorage.getItem("notes");
-    if (!localNotes) return [];
-    const notes = JSON.parse(localNotes);
-    return notes;
-  };
   return (
     <>
       <Header />
@@ -41,7 +34,12 @@ const Home = () => {
         </form>
         <div className="flex flex-wrap gap-10">
           {getAvailableNotes().map((note, i) => (
-            <Card key={i} title={note.title} tags={note.options} />
+            <Card
+              key={i}
+              to={`notes/${note.id}`}
+              title={note.title}
+              tags={note.options}
+            />
           ))}
         </div>
       </div>
