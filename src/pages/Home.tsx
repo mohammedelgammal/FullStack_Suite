@@ -1,11 +1,16 @@
 import CreatableSelect from "react-select/creatable";
 import { Card } from "src/common/ui";
 import { Header } from "src/Layout";
+import { Note } from "src/types";
+import { getAvailableOptions } from "src/utils/helpers";
 
 const Home = () => {
-  // replace with stored tags and replace with cards data
-  const options: string[] = [];
-
+  const getAvailableNotes = (): Note[] => {
+    const localNotes = localStorage.getItem("notes");
+    if (!localNotes) return [];
+    const notes = JSON.parse(localNotes);
+    return notes;
+  };
   return (
     <>
       <Header />
@@ -28,15 +33,16 @@ const Home = () => {
                 className="min-w-96"
                 name="tags"
                 isMulti
-                options={options}
+                options={getAvailableOptions()}
                 required
               />
             </div>
           </div>
         </form>
         <div className="flex flex-wrap gap-10">
-          <Card title="card" />
-          {/* {cards.map(card => => <Card title={card.title} />)} */}
+          {getAvailableNotes().map((note, i) => (
+            <Card key={i} title={note.title} tags={note.options} />
+          ))}
         </div>
       </div>
     </>

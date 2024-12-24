@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import { MultiValue } from "react-select";
 import Creatable from "react-select/creatable";
 import { Button } from "src/common/ui";
-import { CreateNoteFormType, ThemeType } from "src/types";
-
-type OptionType = {
-  label: string;
-  value: string;
-};
+import { getAvailableOptions } from "src/utils/helpers";
+import { CreateNoteFormType, OptionType, ThemeType } from "src/types";
 
 type Note = {
   title: string;
@@ -23,11 +19,6 @@ const initialFormData: CreateNoteFormType = {
 };
 
 const CrateNote = () => {
-  const getAvailableOptions = (): OptionType[] => {
-    const localOptions: string | null = localStorage.getItem("tags");
-    if (!localOptions) return [];
-    return JSON.parse(localOptions);
-  };
   const [options, setOptions] = useState<OptionType[]>([]);
   const [formData, setFormData] = useState<CreateNoteFormType>(initialFormData);
 

@@ -14,7 +14,7 @@ interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 type CardProps = {
   title: string;
-  tags?: string[];
+  tags: OptionType[];
 };
 
 type CreateNoteFormType = {
@@ -22,5 +22,23 @@ type CreateNoteFormType = {
   body: string;
 };
 
-export type { ButtonType, CardProps, CreateNoteFormType };
+type OptionType = {
+  label: string;
+  value: string;
+};
+
+type Note = CreateNoteFormType & { options: OptionType[] };
+
+type TagProps = {
+  title: string;
+};
+
+export type {
+  ButtonType,
+  CardProps,
+  CreateNoteFormType,
+  OptionType,
+  Note,
+  TagProps,
+};
 export { ThemeType };
