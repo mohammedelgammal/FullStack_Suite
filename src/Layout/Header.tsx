@@ -9,7 +9,9 @@ const Header = () => {
         <Button href="/new" theme={ThemeType.PRIMARY}>
           Create Note
         </Button>
-        <Button theme={ThemeType.SECONDARY}>Edit Tags</Button>
+        <Button href="tags" theme={ThemeType.SECONDARY}>
+          Edit Tags
+        </Button>
       </div>
     </div>
   );
