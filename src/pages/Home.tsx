@@ -1,9 +1,28 @@
+import { useEffect, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import { Card } from "src/common/ui";
 import { Header } from "src/Layout";
-import { getAvailableOptions, getAvailableNotes } from "src/utils/helpers";
+import { FiltersType, Note } from "src/types";
+import {
+  getAvailableOptions,
+  getAvailableNotes,
+  filterNotes,
+} from "src/utils/helpers";
 
 const Home = () => {
+  const [notes, setNotes] = useState<Note[]>(getAvailableNotes());
+  const [filter, setFilter] = useState<FiltersType>({
+    title: "",
+    options: [],
+  });
+
+  useEffect(() => {
+    const localNotes = getAvailableNotes();
+    const filteredNotes = filterNotes(localNotes, filter);
+
+    setNotes(filteredNotes);
+  }, [filter]);
+
   return (
     <>
       <Header />
@@ -18,6 +37,12 @@ const Home = () => {
                 type="text"
                 placeholder="title"
                 required
+                onChange={(e) =>
+                  setFilter((prevFilter) => ({
+                    ...prevFilter,
+                    title: e.target.value,
+                  }))
+                }
               />
             </div>
             <div className="flex flex-1 flex-col gap-1">
@@ -28,12 +53,21 @@ const Home = () => {
                 isMulti
                 options={getAvailableOptions()}
                 required
+                onChange={(tags) =>
+                  setFilter((prevFilter) => ({
+                    ...prevFilter,
+                    options: tags.map((tag) => ({
+                      label: tag.label,
+                      value: tag.value,
+                    })),
+                  }))
+                }
               />
             </div>
           </div>
         </form>
         <div className="flex flex-wrap gap-10">
-          {getAvailableNotes().map((note, i) => (
+          {notes.map((note, i) => (
             <Card
               key={i}
               to={`notes/${note.id}`}

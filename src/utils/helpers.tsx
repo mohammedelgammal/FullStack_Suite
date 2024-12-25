@@ -1,4 +1,4 @@
-import { Note, OptionType, SetOptionsStateType } from "src/types";
+import { FiltersType, Note, OptionType, SetOptionsStateType } from "src/types";
 
 const getAvailableOptions = (): OptionType[] => {
   const localOptions: string | null = localStorage.getItem("tags");
@@ -27,4 +27,26 @@ const handleCreateOption = (
   setOptions((prevOptions) => [...prevOptions, newOption]);
 };
 
-export { getAvailableOptions, getAvailableNotes, handleCreateOption };
+const filterNotes = (localNotes: Note[], filter: FiltersType): Note[] => {
+  return localNotes.filter((note) => {
+    return (
+      ((!filter.title || note.title.includes(filter.title)) &&
+        !filter.options.length) ||
+      ((): boolean => {
+        for (const filterOption of filter.options) {
+          for (const noteOption of note.options) {
+            if (noteOption.label === filterOption.label) return true;
+          }
+        }
+        return false;
+      })()
+    );
+  });
+};
+
+export {
+  getAvailableOptions,
+  getAvailableNotes,
+  handleCreateOption,
+  filterNotes,
+};

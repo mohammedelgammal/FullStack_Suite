@@ -37,6 +37,11 @@ type TagProps = {
   title: string;
 };
 
+type FiltersType = {
+  title: string;
+  options: OptionType[];
+};
+
 type SetOptionsStateType = React.Dispatch<React.SetStateAction<OptionType[]>>;
 
 export type {
@@ -47,5 +52,6 @@ export type {
   TagProps,
   NoteFormData,
   SetOptionsStateType,
+  FiltersType,
 };
 export { ThemeType };
