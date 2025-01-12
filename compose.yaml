@@ -1,0 +1,14 @@
+version: ${COMPOSE_VERSION}
+services:
+  backend:
+    image: django-crm:${CRM_VERSION}
+    build: .
+    container_name: crm-${CRM_VERSION}
+    expose:
+      - ${EXPOSED_PORT}
+    ports:
+      - ${HOST_PORT}:${EXPOSED_PORT}
+    volumes:
+      - ./db.sqlite3:/myapp/db.sqlite3:ro
+    stdin_open: true
+    tty: true
