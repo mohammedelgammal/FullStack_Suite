@@ -9,9 +9,6 @@ lerna-debug.log*
 
 .vscode
 
-Dockerfile
-.dockerignore
-
 .vite
 venv
 
