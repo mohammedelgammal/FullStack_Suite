@@ -1,48 +1,34 @@
-name: Starter Workflow
-run-name: ${{ github.actor }} triggered CI on ${{ github.repository }}. Running ${{ github.workflow }}... by ${{ github.repository_owner }}.
+name: Django_CRM TEST CI
+run-name: CI triggered by ${{ github.actor }} on ${{ github.ref }}
 
 on:
-  workflow_dispatch:
   push:
-    branches: django_crm
+    branches:
+      - django_crm
   pull_request:
-    branches: django_crm
+    branches:
+      - django_crm
 
 jobs:
-  Preparing_Workflow:
-    runs-on:
-      - ubuntu-latest
-    steps:
-      - run: |
-          echo "Building Django_Crm Application on ${{ runner.os }}" & 
-          echo "Built with ${{ runner.name }}."
-      - run: |
-          echo "Running on ${{ github.repository }} on branch ${{ github.ref_name }}"
-      - run: |
-          echo "Workflow is now ready for Checkout!"
-      - run: echo "Job ${{ job.status }}"
-
-  Building_Django_CRM:
-    runs-on: ubuntu-latest
-    needs: Preparing_Workflow
+  Build_and_Test:
+    runs-on: alpine-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
-      max-parallel: 5
+        python-versions: [3.9, 3.11, 3.13]
+      max-parallel: 3
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Checkout ran successfully!"
-      - name: Install Python Version Matrix ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Creating Virtual Environment
+          python-version: ${{ matrix.python-versions }}
+          cache: pip
+      - name: Setup and Activate Virtual Environment
         run: |
           python -m venv venv
           source venv/bin/activate
-      - name: Installing Dependencies
+      - name: Install Dependencies
         run: |
           pip install --upgrade pip 
           pip install -r requirements.txt
-      - name: Running Tests on Django CRM
-        run: python manage.py test
+      - name: Run Tests
+        run: python run test
