@@ -11,10 +11,11 @@ on:
 
 jobs:
   Build_and_Test:
-    runs-on: alpine-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python-versions: [3.9, 3.11, 3.13]
+        os: [ubuntu-latest, windows-latest]
       max-parallel: 3
     steps:
       - uses: actions/checkout@v4
