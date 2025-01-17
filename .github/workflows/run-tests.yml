@@ -1,0 +1,47 @@
+name: Starter Workflow
+run-name: ${{ github.actor }} triggered CI on ${{ github.repository }}. Running ${{ github.workflow }}... by ${{ github.repository_owner }}.
+
+on:
+  push:
+    branches: django_crm
+  pull_request:
+    branches: django_crm
+
+jobs:
+  Preparing_Workflow:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - run: |
+          echo "Building Django_Crm Application on ${{ runner.os }}" & 
+          echo "Built with ${{ runner.name }}."
+      - run: |
+          echo "Running on ${{ github.repository }} on branch ${{ github.ref_name }}"
+      - run: |
+          echo "Workflow is now ready for Checkout!"
+      - run: echo "Job ${{ job.status }}"
+
+  Building_Django_CRM:
+    runs-on: ubuntu-latest
+    needs: Preparing_Workflow
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+      max-parallel: 4
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Checkout ran successfully!"
+      - name: Install Python Version Matrix ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Creating Virtual Environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+      - name: Installing Dependencies
+        run: |
+          pip install --upgrade pip 
+          pip install -r requirements.txt
+      - name: Running Tests on Django CRM
+        run: python manage.py test
