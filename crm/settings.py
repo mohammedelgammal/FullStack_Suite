@@ -72,7 +72,7 @@ DATABASES = {
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "localhost",
-        "PORT": 5433, # container psql port
+        "PORT": 5434, # container psql port
     }
 }
 
