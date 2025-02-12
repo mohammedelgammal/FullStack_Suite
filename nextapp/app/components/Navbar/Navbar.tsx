@@ -2,6 +2,9 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { Signin, Signout } from "@/components";
+import logo from "@/assets/imgs/logo.png";
+import profile from "@/assets/imgs/profile.jpg";
+import avatar from "@/assets/imgs/avatar.png";
 
 const Navbar = async () => {
   const session = await auth();
@@ -13,7 +16,7 @@ const Navbar = async () => {
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <Image src="/logo.png" alt="logo image" width={50} height={50} />
+          <Image src={logo} alt="logo image" width={50} height={50} />
         </Link>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {session?.user ? (
@@ -22,7 +25,7 @@ const Navbar = async () => {
               <Signout />
               <Image
                 className="w-8 h-8 rounded-full"
-                src="/profile.jpg"
+                src={profile}
                 alt="profile user photo"
                 width={100}
                 height={100}
@@ -33,7 +36,7 @@ const Navbar = async () => {
               <Signin />
               <Image
                 className="w-8 h-8 rounded-full"
-                src="/avatar.png"
+                src={avatar}
                 alt="avatar photo"
                 width={100}
                 height={100}
