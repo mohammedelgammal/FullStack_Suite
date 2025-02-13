@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Navbar, Footer } from "@/components";
+import { Bayon } from "next/font/google";
 import "./globals.css";
+import React from "react";
+
+const bayon = Bayon({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Khaled Elsakka | Personal Trainer - Achieve Your Fitness Goals",
@@ -24,7 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={bayon.className}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

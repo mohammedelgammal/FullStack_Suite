@@ -3,19 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @layer utilities {
+    .container-center {
+      @apply flex justify-center items-center;
+    }
+    .container-center-v {
+      @apply flex flex-col justify-center items-center;
+    }
   }
+  --primary-color: #fcde3b;
+  --secondary-color: #53f0b8;
+  --background-color: #070915;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
