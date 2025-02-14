@@ -2,12 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Logo, Icon } from "./components";
-import useNavbar from "@/hooks/useNavbar";
-import useToggleMenu from "@/hooks/useToggleMenu";
+import useNavbarScroll from "@/hooks/useNavbarScroll";
 
 const Navbar = () => {
-  const isNavbarHidden = useNavbar();
-  const { isMenuOpen, menuClickHandler } = useToggleMenu();
+  const isNavbarHidden = useNavbarScroll();
 
   return (
     <motion.div
@@ -20,7 +18,7 @@ const Navbar = () => {
       className="bg-red-700 absolute top-0 left-0 right-0  flex justify-between items-center h-24 px-6"
     >
       <Logo />
-      <Icon isMenuOpen={isMenuOpen} menuClickHandler={menuClickHandler} />
+      <Icon />
     </motion.div>
   );
 };

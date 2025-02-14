@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 
-const useNavbar: () => boolean = () => {
+const useNavbarScroll: () => boolean = () => {
   const [isNavbarHidden, setNavbarHidden] = useState<boolean>(false);
   const { scrollY } = useScroll();
 
@@ -17,4 +17,4 @@ const useNavbar: () => boolean = () => {
   return isNavbarHidden;
 };
 
-export default useNavbar;
+export default useNavbarScroll;

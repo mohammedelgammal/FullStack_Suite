@@ -1,17 +1,20 @@
 "use client";
 
-import { NavbarIconType } from "@/types/components/Navbar";
+import { useContext } from "react";
+import NavbarMenuContext from "@/contexts/NavbarMenuContext";
 import Style from "./styles/Icon.module.css";
 
-const Icon = ({ isMenuOpen, menuClickHandler }: NavbarIconType) => {
+const Icon = () => {
+  const menuContext = useContext(NavbarMenuContext);
+
   return (
     <div
       className="container-center-v gap-0 bg-primary w-11 h-11 cursor-pointer"
-      onClick={menuClickHandler}
+      onClick={menuContext?.menuClickHandler}
     >
       <svg
         className={`${Style.ham} ${Style.hamRotate} ${Style.hamS} ${
-          isMenuOpen ? Style.active : ""
+          menuContext?.isMenuOpen ? Style.active : ""
         }`}
         viewBox="0 0 100 100"
         width="80"

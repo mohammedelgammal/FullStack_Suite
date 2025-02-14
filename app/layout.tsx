@@ -1,8 +1,9 @@
+import React from "react";
 import type { Metadata } from "next";
-import { Navbar, Footer } from "@/components";
+import { Footer } from "@/components";
+import { NavbarWithMenu } from "./contexts/NavbarMenuContext";
 import { Bayon } from "next/font/google";
 import "./globals.css";
-import React from "react";
 
 const bayon = Bayon({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={bayon.className}>
-        <Navbar />
+        <NavbarWithMenu />
         {children}
         <Footer />
       </body>
