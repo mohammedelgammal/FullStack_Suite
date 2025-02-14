@@ -11,7 +11,7 @@ const Logo = memo(() => {
         width={50}
         height={50}
       />
-      <span className="text-white text-3xl">ELSAKKA</span>
+      <span className="text-white text-3xl select-none">ELSAKKA</span>
     </Link>
   );
 });
