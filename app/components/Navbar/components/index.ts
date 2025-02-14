@@ -1,3 +1,2 @@
-export { default as Logo } from "./Logo";
 export { default as Icon } from "./Icon";
-export { default as Menu } from "./Menu";
+export { default as Menu } from "./Menu/Menu";

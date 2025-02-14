@@ -2,13 +2,8 @@ import React from "react";
 import type { Metadata } from "next";
 import { Footer } from "@/components";
 import { NavbarWithMenu } from "./contexts/NavbarMenuContext";
-import { Bayon } from "next/font/google";
+import { bayon } from "@/common/fonts";
 import "./globals.css";
-
-const bayon = Bayon({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export const metadata: Metadata = {
   title: "Khaled Elsakka | Personal Trainer - Achieve Your Fitness Goals",
@@ -26,14 +21,10 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<ChildrenPropType>) {
   return (
     <html lang="en">
-      <body className={bayon.className}>
+      <body className={`${bayon.className}`}>
         <NavbarWithMenu />
         {children}
         <Footer />

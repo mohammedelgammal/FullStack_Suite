@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Logo, Icon } from "./components";
+import { Logo } from "@/common";
+import { Icon } from "./components";
 import useNavbarScroll from "@/hooks/useNavbarScroll";
 
 const Navbar = () => {

@@ -9,7 +9,7 @@ const Icon = () => {
 
   return (
     <div
-      className="container-center-v gap-0 bg-primary w-11 h-11 cursor-pointer"
+      className="z-20 container-center-v gap-0 bg-primary w-11 h-11 cursor-pointer"
       onClick={menuContext?.menuClickHandler}
     >
       <svg

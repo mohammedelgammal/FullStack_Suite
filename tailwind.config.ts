@@ -11,6 +11,13 @@ export default {
       colors: {
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
+        dark: "var(--background-color)",
+      },
+      width: {
+        "128": "32rem",
+      },
+      height: {
+        "608": "38rem",
       },
     },
   },
