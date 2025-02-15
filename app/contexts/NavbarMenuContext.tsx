@@ -2,7 +2,7 @@
 
 import { createContext } from "react";
 import { Navbar } from "@/components";
-import { Menu } from "@/components/Navbar/components";
+import { Icon, Menu } from "@/components/Navbar/components";
 import useToggleMenu from "@/hooks/useToggleMenu";
 import { ToggleHookProps } from "@/types/hooks";
 
@@ -14,6 +14,7 @@ export const NavbarWithMenu = () => {
   return (
     <NavbarMenuContext.Provider value={{ isMenuOpen, menuClickHandler }}>
       <Menu />
+      <Icon />
       <Navbar />
     </NavbarMenuContext.Provider>
   );
