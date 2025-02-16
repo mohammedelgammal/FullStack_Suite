@@ -18,6 +18,7 @@ export default {
       },
       height: {
         "608": "38rem",
+        cover: "670px",
       },
     },
   },

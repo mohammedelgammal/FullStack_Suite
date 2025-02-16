@@ -10,6 +10,9 @@
     .container-center-v {
       @apply flex flex-col justify-center items-center;
     }
+    .container-start {
+      @apply flex justify-start items-center;
+    }
     .container-start-v {
       @apply flex flex-col justify-center items-start;
     }
@@ -17,6 +20,7 @@
   --primary-color: #fcde3b;
   --secondary-color: #53f0b8;
   --background-color: #070915;
+  --dark-color: #070915;
 }
 
 * {

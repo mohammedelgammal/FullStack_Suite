@@ -9,7 +9,7 @@ import { space_grotesk } from "@/common/fonts";
 
 const Menu = () => {
   const menuContext = useContext(NavbarMenuContext);
-  const variant: string = menuContext?.isMenuOpen ? "visible" : "hidden";
+  const variant: "hidden"| "visible" = menuContext?.isMenuOpen ? "visible" : "hidden";
 
   return (
     <motion.div

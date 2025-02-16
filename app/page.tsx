@@ -1,5 +1,11 @@
+import Hero from "./components/Hero/Hero";
+
 const HomePage = () => {
-  return <div style={{ height: "200vh" }}>This is Homepage</div>;
+  return (
+    <main style={{ height: "200vh" }}>
+      <Hero />
+    </main>
+  );
 };
 
 export default HomePage;
