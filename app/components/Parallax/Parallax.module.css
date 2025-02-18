@@ -1,0 +1,32 @@
+.quoteRight,
+.quoteLeft {
+  animation-name: right-shift;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.quoteRight {
+  animation-name: right-shift;
+}
+
+.quoteLeft {
+  animation-name: left-shift;
+}
+
+@keyframes right-shift {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes left-shift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

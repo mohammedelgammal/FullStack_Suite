@@ -5,7 +5,7 @@ import gymIcon from "/public/GymIcon.svg";
 
 const Hero = () => {
   return (
-    <div className="container-start w-screen h-cover p-6 bg-[url(/HeroSection.jpg)] max-md:bg-[url(/HeroSectionMd.jpg)] max-sm:bg-[url(/HeroSectionSm.jpg)] bg-cover bg-center text-white text-4xl">
+    <div className="container-start max-w-screen h-cover p-6 bg-[url(/HeroSection.jpg)] max-md:bg-[url(/HeroSectionMd.jpg)] max-sm:bg-[url(/HeroSectionSm.jpg)] bg-cover bg-center text-white text-4xl">
       <div className="container-start-v">
         <div className="container-center gap-1 text-secondary text-lg mb-4">
           <Image
