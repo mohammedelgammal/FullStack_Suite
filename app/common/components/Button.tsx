@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { ForwardRefComponent, HTMLMotionProps, motion } from "framer-motion";
 
-const Button = ({ variant, href, children, ...props }: ButtonPropsType) => {
+const Button = ({
+  variant,
+  href,
+  classNames,
+  children,
+  ...props
+}: ButtonPropsType) => {
   const StyledButton = () => (
     <motion.div
       variants={getVariant(variant).parentVariants}
@@ -14,7 +20,7 @@ const Button = ({ variant, href, children, ...props }: ButtonPropsType) => {
       <motion.button
         className={`relative overflow-hidden container-center tracking-wide px-5 py-3 text-2xl
         ${variant == "outline" ? "border border-primary" : ""}
-        ${props.className}`}
+        ${classNames}`}
         {...props}
         variants={getVariant(variant).btnFramerVariants}
       >
@@ -100,6 +106,7 @@ type ButtonPropsType = ChildrenPropType &
   > & {
     variant: "primary" | "outline";
     href?: string;
+    classNames?: string;
   };
 
 export type motionType = {
