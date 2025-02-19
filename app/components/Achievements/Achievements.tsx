@@ -10,7 +10,7 @@ const Achievements = () => {
   return (
     <div
       ref={containerRef}
-      className="container-center w-screen overflow-hidden flex-wrap px-5 py-16 max-lg:py-11 gap-20 max-md:gap-12 bg-dark"
+      className="container-center max-w-screen overflow-hidden flex-wrap px-5 py-16 max-lg:py-11 gap-20 max-md:gap-12 bg-dark"
     >
       {achievements.map((achievement, key) => (
         <Achievement ref={containerRef} key={key} {...achievement} />
