@@ -1,4 +1,4 @@
-import { Hero, Parallax } from "@/components";
+import { Hero, Parallax, Achievements } from "@/components";
 
 const HomePage = () => {
   return (
@@ -8,6 +8,7 @@ const HomePage = () => {
         <Parallax direction="left" duration={30} variant="secondary" />
         <Parallax direction="right" duration={30} variant="primary" />
       </section>
+      <Achievements />
     </main>
   );
 };

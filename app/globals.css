@@ -21,6 +21,7 @@
   --secondary-color: #53f0b8;
   --background-color: #070915;
   --dark-color: #070915;
+  --semi-dark-color: rgba(7, 9, 21, 0.5);
 }
 
 * {

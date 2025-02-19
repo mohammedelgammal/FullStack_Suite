@@ -12,6 +12,7 @@ export default {
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
         dark: "var(--background-color)",
+        semiDark: "var(--semi-dark-color)",
       },
       width: {
         "128": "32rem",
