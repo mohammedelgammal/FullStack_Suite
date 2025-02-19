@@ -24,9 +24,9 @@ const Button = ({
         {...props}
         variants={getVariant(variant).btnFramerVariants}
       >
-        <motion.div className="z-20">{children}</motion.div>
+        <motion.div className="z-10">{children}</motion.div>
         <motion.div
-          className={`z-10 absolute w-full h-full`}
+          className={`z-0 absolute w-full h-full`}
           transition={{ duration: 0.3, bounce: 1 }}
           variants={getVariant(variant).pseudoFramerVariants}
         />

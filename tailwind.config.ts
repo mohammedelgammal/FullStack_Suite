@@ -21,6 +21,10 @@ export default {
         "608": "38rem",
         cover: "670px",
       },
+      zIndex: {
+        1: "1",
+        2: "2",
+      },
     },
   },
   plugins: [],
