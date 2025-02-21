@@ -16,6 +16,9 @@
     .container-start-v {
       @apply flex flex-col justify-center items-start;
     }
+    .abs-center {
+      @apply absolute top-1/2 -translate-y-1/2 right-0 left-0 mx-auto;
+    }
   }
   --primary-color: #fcde3b;
   --secondary-color: #53f0b8;

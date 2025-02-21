@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/common/components";
 import { Icon, Heading } from "./components";
-import gymIcon from "/public/GymIcon.svg";
 import Style from "./Hero.module.css";
 
 const Hero = () => {
@@ -14,7 +13,7 @@ const Hero = () => {
         >
           <Image
             className="-translate-y-0.5"
-            src={gymIcon}
+            src="/GymIcon.svg"
             alt="Gym Icon"
             height={35}
             width={35}
@@ -24,11 +23,11 @@ const Hero = () => {
         <Heading />
         <div className="container-center gap-5 max-md:gap-3">
           <Button classNames={Style.firstBtn} variant="primary">
-            Join Us Today
+            Join us now
           </Button>
           <Button classNames={Style.secondBtn} variant="outline">
             <div className="relative container-center pr-7 dela">
-              <span>About Us</span>
+              <span>About me</span>
               <Icon />
             </div>
           </Button>

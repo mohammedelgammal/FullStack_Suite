@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { motionType } from "@/common/components/Button";
-import RightPrimary from "/public/right-arrow.svg";
-import RightSecondary from "/public/arrow-right-s.svg";
 
 const Icon = () => {
   const primaryVariant: motionType = {
@@ -23,7 +21,7 @@ const Icon = () => {
         variants={primaryVariant}
       >
         <Image
-          src={RightPrimary}
+          src="/right-arrow.svg"
           alt="Right Arrow Image"
           width={30}
           height={30}
@@ -34,7 +32,7 @@ const Icon = () => {
         variants={secondaryVariant}
       >
         <Image
-          src={RightSecondary}
+          src="/arrow-right-s.svg"
           alt="Right Arrow Image"
           width={30}
           height={30}

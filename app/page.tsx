@@ -1,14 +1,15 @@
-import { Hero, Parallax, Achievements } from "@/components";
+import { Hero, Parallax, Achievements, Transformations } from "@/components";
 
 const HomePage = () => {
   return (
-    <main style={{ height: "200vh" }}>
+    <main>
       <Hero />
       <section>
         <Parallax direction="left" duration={30} variant="secondary" />
         <Parallax direction="right" duration={30} variant="primary" />
       </section>
       <Achievements />
+      <Transformations />
     </main>
   );
 };
