@@ -1,4 +1,4 @@
-import { Hero, Parallax, Achievements, Transformations } from "@/components";
+import { Hero, Parallax, Achievements, Transformations, Testimonials } from "@/components";
 
 const HomePage = () => {
   return (
@@ -10,6 +10,7 @@ const HomePage = () => {
       </section>
       <Achievements />
       <Transformations />
+      <Testimonials />
     </main>
   );
 };

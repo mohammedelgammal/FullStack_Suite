@@ -10,7 +10,7 @@ const Achievement = ({
   countUnit,
   ref,
 }: AchievementPropsType) => {
-  const classNames = `z-0 text-8xl max-lg:text-7xl text-gray-500 stroke-gray-500 stroke-3 -translate-y-1 ${barlow_condensed.className}`;
+  const classNames = `z-0 text-8xl max-lg:text-7xl text-fade stroke-fade stroke-3 -translate-y-1 ${barlow_condensed.className}`;
 
   return (
     <div className="relative">

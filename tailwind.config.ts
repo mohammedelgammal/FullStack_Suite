@@ -13,6 +13,8 @@ export default {
         secondary: "var(--secondary-color)",
         dark: "var(--background-color)",
         semiDark: "var(--semi-dark-color)",
+        disabled: "var(--disabled-color)",
+        fade: "var(--fade-color)",
       },
       width: {
         "128": "32rem",
@@ -24,6 +26,9 @@ export default {
       zIndex: {
         1: "1",
         2: "2",
+      },
+      spacing: {
+        chevron: "5.4rem",
       },
     },
   },
