@@ -68,6 +68,18 @@ const btnVariants: BtnVariantsType = {
       pseudoBg: "var(--primary-color)",
     },
   },
+  dark: {
+    place: {
+      bg: "var(--background-color)",
+      color: "var(--dark-color)",
+      pseudoBg: "var(--secondary-color)",
+    },
+    offset: {
+      bg: "var(--background-color)",
+      color: "var(--primary-color)",
+      pseudoBg: "var(--secondary-color)",
+    },
+  },
 };
 
 const getVariant: GetVariantType = (variant) => ({
@@ -104,7 +116,7 @@ type ButtonPropsType = ChildrenPropType &
   React.ComponentProps<
     ForwardRefComponent<HTMLButtonElement, HTMLMotionProps<"button">>
   > & {
-    variant: "primary" | "outline";
+    variant: ButtonVariants;
     href?: string;
     classNames?: string;
   };
@@ -116,11 +128,13 @@ export type motionType = {
 };
 
 type BtnVariantsType = {
-  [key in "primary" | "outline"]: motionType;
+  [key in ButtonVariants]: motionType;
 };
 
-type GetVariantType = (variant: "primary" | "outline") => {
+type GetVariantType = (variant: ButtonVariants) => {
   [key: string]: motionType;
 };
+
+type ButtonVariants = "primary" | "outline" | "dark";
 
 export default Button;

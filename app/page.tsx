@@ -1,4 +1,11 @@
-import { Hero, Parallax, Achievements, Transformations, Testimonials } from "@/components";
+import {
+  Hero,
+  Parallax,
+  Achievements,
+  Transformations,
+  Testimonials,
+  GetStarted,
+} from "@/components";
 
 const HomePage = () => {
   return (
@@ -11,6 +18,7 @@ const HomePage = () => {
       <Achievements />
       <Transformations />
       <Testimonials />
+      <GetStarted />
     </main>
   );
 };
