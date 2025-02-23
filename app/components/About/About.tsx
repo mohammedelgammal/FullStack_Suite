@@ -4,7 +4,7 @@ import { space_grotesk } from "@/common/fonts";
 
 const About = () => {
   return (
-    <section className="bg-dark py-10">
+    <section className="bg-dark pt-10">
       <Forehead
         variant="start"
         meta="About us"

@@ -7,6 +7,7 @@ import {
   GetStarted,
   Services,
   About,
+  SocialMedia,
 } from "@/components";
 
 const HomePage = () => {
@@ -23,6 +24,7 @@ const HomePage = () => {
       <GetStarted />
       <Services />
       <About />
+      <SocialMedia />
     </main>
   );
 };
