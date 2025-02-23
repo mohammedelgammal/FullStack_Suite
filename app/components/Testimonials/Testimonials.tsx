@@ -7,6 +7,7 @@ const Testimonials = () => {
   return (
     <section className="bg-dark py-6">
       <Forehead
+        variant="start"
         meta="Our Testimonials"
         icon={
           <Image
@@ -26,7 +27,6 @@ const Testimonials = () => {
           our guidance and support.
         </p>
       </Forehead>
-
       <Carousel />
     </section>
   );

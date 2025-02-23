@@ -1,7 +1,18 @@
-const Forhead = ({ meta, title, icon, children }: ForeheadPropsType) => {
+const Forhead = ({
+  meta,
+  title,
+  icon,
+  variant,
+  children,
+}: ForeheadPropsType) => {
+  const containerJustify =
+    variant == "center"
+      ? "container-center-v text-center"
+      : "container-start-v";
+
   return (
-    <div className="container-start-v max-w-screen p-6 text-4xl mb-10">
-      <div className="container-start-v">
+    <div className={`${containerJustify} max-w-screen p-6 text-4xl mb-10`}>
+      <div className={`${containerJustify}`}>
         <div className="container-center gap-1 text-secondary text-lg mb-4">
           {icon}
           {meta}
@@ -20,6 +31,7 @@ type ForeheadPropsType = {
   title: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
+  variant: "start" | "center";
 };
 
 export default Forhead;

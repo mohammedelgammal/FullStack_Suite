@@ -6,6 +6,7 @@ const Transformations = () => {
   return (
     <section className="container-start-v bg-dark max-w-screen overflow-hidden">
       <Forehead
+        variant="start"
         meta="Transformations"
         icon={
           <Image

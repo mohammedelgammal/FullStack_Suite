@@ -6,3 +6,4 @@ export { default as Achievements } from "./Achievements/Achievements";
 export { default as Transformations } from "./Transformations/Transformations";
 export { default as Testimonials } from "./Testimonials/Testimonials";
 export { default as GetStarted } from "./GetStarted/GetStarted";
+export { default as Services } from "./Services/Services";
