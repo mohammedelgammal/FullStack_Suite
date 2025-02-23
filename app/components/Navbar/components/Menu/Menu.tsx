@@ -68,21 +68,25 @@ const Menu = () => {
           <Section title="Follow Us On">
             <div className="container-center gap-3">
               <SocialLink
+                variant="primary"
                 href="https://www.facebook.com/p/Khaled-Elsakka-61559620383183/"
                 src="/facebook.svg"
                 alt="facebook icon"
               />
               <SocialLink
+                variant="primary"
                 href="https://www.instagram.com/elsakka1/?hl=ar"
                 src="/instagram.svg"
                 alt="instagram icon"
               />
               <SocialLink
+                variant="primary"
                 href="https://www.youtube.com/@KhaledElsakka"
                 src="/youtube.svg"
                 alt="youtube icon"
               />
               <SocialLink
+                variant="primary"
                 href="https://www.tiktok.com/@khaledelsakka658"
                 src="/tiktok.svg"
                 alt="tiktok icon"
