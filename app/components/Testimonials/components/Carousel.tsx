@@ -41,7 +41,7 @@ const Slide = ({ src, testimonial, reviewer, jobTitle }: SlidePropsType) => {
           height={100}
           className="rounded-full border-2 border-secondary"
         />
-        <p className="text-white text-lg text-center">"{testimonial}"</p>
+        <p className="text-white text-lg text-center">{`"${testimonial}"`}</p>
         <div className="container-center-v">
           <div className="container-center gap-1 mb-2">
             {range(5).map((_, key) => (

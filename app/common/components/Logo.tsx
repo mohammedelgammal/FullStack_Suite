@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { memo } from "react";
 
-const Logo = memo(() => {
+const Logo = memo(function Logo() {
   return (
     <Link href="/" className="container-center">
       <Image

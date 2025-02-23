@@ -1,3 +1,3 @@
-type Nullable<T> = T | null;
-type Optional<T> = T | undefined;
-type ChildrenPropType = { children: React.ReactNode };
+export type Nullable<T> = T | null;
+export type Optional<T> = T | undefined;
+export type ChildrenPropType = { children: React.ReactNode };

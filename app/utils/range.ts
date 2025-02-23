@@ -1,1 +1,3 @@
-export default (length: number): number[] => Array.from({ length });
+const range = (length: number): number[] => Array.from({ length });
+
+export default range;

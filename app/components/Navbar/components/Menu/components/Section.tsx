@@ -1,3 +1,5 @@
+import { ChildrenPropType } from "@/types/common";
+
 const Section = ({ title, children }: SectionPropsType) => {
   return (
     <div className="container-start-v gap-3">

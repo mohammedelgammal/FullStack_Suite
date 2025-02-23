@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ForwardRefComponent, HTMLMotionProps, motion } from "framer-motion";
+import { ChildrenPropType } from "@/types/common";
 
 const Button = ({
   variant,

@@ -1,4 +1,4 @@
-export default [
+const data = [
   "No Excuses",
   "Stay Strong",
   "Push Harder",
@@ -20,3 +20,5 @@ export default [
   "Sweat, Smile, Repeat",
   "Conquer Yourself",
 ];
+
+export default data;

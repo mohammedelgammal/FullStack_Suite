@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components";
 import { NavbarWithMenu } from "./contexts/NavbarMenuContext";
 import { bayon } from "@/common/fonts";
+import { ChildrenPropType } from "./types/common";
 import "./globals.css";
 
 export const metadata: Metadata = {

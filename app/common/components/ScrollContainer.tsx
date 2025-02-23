@@ -2,6 +2,7 @@
 
 import { ForwardRefComponent, HTMLMotionProps, motion } from "framer-motion";
 import useNavbarScroll from "@/hooks/useNavbarScroll";
+import { ChildrenPropType } from "@/types/common";
 
 const ScrollContainer = ({ children, ...props }: ScrollContainerPropTypes) => {
   const isNavbarHidden = useNavbarScroll();

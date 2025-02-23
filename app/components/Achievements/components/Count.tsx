@@ -9,6 +9,7 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
+import { Nullable } from "@/types/common";
 
 const Count = ({ to = 0, duration = 3, classNames, ref }: CountPropsType) => {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
@@ -22,7 +23,7 @@ const Count = ({ to = 0, duration = 3, classNames, ref }: CountPropsType) => {
       controls = animate(count, to, { duration });
     }
     return () => controls?.stop();
-  }, [isInView]);
+  }, [isInView, count, duration, to]);
 
   return <motion.pre className={classNames}>{rounded}</motion.pre>;
 };
