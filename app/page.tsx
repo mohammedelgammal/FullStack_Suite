@@ -6,6 +6,7 @@ import {
   Testimonials,
   GetStarted,
   Services,
+  About,
 } from "@/components";
 
 const HomePage = () => {
@@ -21,6 +22,7 @@ const HomePage = () => {
       <Testimonials />
       <GetStarted />
       <Services />
+      <About />
     </main>
   );
 };
