@@ -5,7 +5,7 @@ from pygments.styles import get_all_styles
 DEFAULT_LANG_CHOICE = "python"
 DEFAULT_STYLE_CHOICE = "friendly"
 LANG_CHOICES = sorted(
-    [(lexer[0], lexer[1][0]) for lexer in get_all_lexers() if lexer[1]]
+    [(lexer[1][0], lexer[0]) for lexer in get_all_lexers() if lexer[1]]
 )
 STYLE_CHOICES = sorted([(style, style) for style in get_all_styles()])
 
