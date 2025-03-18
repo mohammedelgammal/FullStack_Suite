@@ -2,14 +2,12 @@ from .models import Snippet
 from .serializers import SnippetSerializer
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
 from django.http import Http404, HttpResponse
-from django.shortcuts import get_object_or_404
 
 
 class SnippetList(APIView):
-    def get(self, request):
+    def get(self):
         snippets = Snippet.objects.all()
         serializer = SnippetSerializer(snippets, many=True)
         return Response(serializer.data)
@@ -46,7 +44,3 @@ class SnippetDetail(APIView):
         snippet = self.get_snippet(pk)
         snippet.delete()
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
-
-
-snippet_list = SnippetList.as_view()
-snippet_detail = SnippetDetail.as_view()
