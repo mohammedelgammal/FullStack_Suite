@@ -55,7 +55,7 @@ const About = () => {
               <li className={`text-lg text-fade ${space_grotesk.className}`}>
                 A supportive and motivating environment to keep you inspired.
               </li>
-            </ol>
+            </ol> 
           </div>
         </div>
         <div className="h-[680px] bg-[url(/about.jpg)] bg-cover bg-center max-lg:bg-top"></div>
