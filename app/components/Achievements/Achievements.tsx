@@ -6,7 +6,7 @@ import { AchievementPropsType } from "./components/Achievement";
 
 const Achievements = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-
+ 
   return (
     <div
       ref={containerRef}
