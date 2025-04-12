@@ -25,7 +25,7 @@ const Menu = () => {
       className="z-10 container-center-v px-16 overflow-y-auto h-screen w-128 max-md:w-screen bg-primary fixed top-0 right-0"
     >
       <div className="container-start-v gap-7 text-start min-h-fit w-fit">
-        <span className="text-dark text-6xl select-none">ELSAKKA</span>
+        <span className="text-dark text-6xl select-none">COACH MORSY</span>
         <p
           className={`${space_grotesk.className} text-dark grote select-none `}
         >
@@ -43,7 +43,7 @@ const Menu = () => {
         <div className="container-start-v gap-3">
           <Section title="Reach out now!">
             <Link
-              href="https://wa.me/201069389022"
+              href="https://wa.me/201017053245"
               target="_blank"
               className="container-center gap-3"
             >
@@ -53,7 +53,7 @@ const Menu = () => {
                 height={24}
                 width={24}
               />
-              <span className={`${space_grotesk.className}`}>01069389022</span>
+              <span className={`${space_grotesk.className}`}>01017053245</span>
             </Link>
           </Section>
         </div>
@@ -69,25 +69,25 @@ const Menu = () => {
             <div className="container-center gap-3">
               <SocialLink
                 variant="primary"
-                href="https://www.facebook.com/p/Khaled-Elsakka-61559620383183/"
+                href="https://www.facebook.com/mahmoudmorsyyy"
                 src="/facebook.svg"
                 alt="facebook icon"
               />
               <SocialLink
                 variant="primary"
-                href="https://www.instagram.com/elsakka1/?hl=ar"
+                href="https://www.instagram.com/coach_morsy/"
                 src="/instagram.svg"
                 alt="instagram icon"
               />
               <SocialLink
                 variant="primary"
-                href="https://www.youtube.com/@KhaledElsakka"
+                href="https://www.youtube.com/channel/UCayte2Gjw7yZ7gkG-uB1xIA"
                 src="/youtube.svg"
                 alt="youtube icon"
               />
               <SocialLink
                 variant="primary"
-                href="https://www.tiktok.com/@khaledelsakka658"
+                href="https://www.tiktok.com/@coach_morsy"
                 src="/tiktok.svg"
                 alt="tiktok icon"
               />

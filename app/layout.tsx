@@ -7,7 +7,7 @@ import { ChildrenPropType } from "./types/common";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Khaled Elsakka | Personal Trainer - Achieve Your Fitness Goals",
+  title: "Coach Morsy | Personal Trainer - Achieve Your Fitness Goals",
   description:
     "Achieve your fitness goals with personalized training. We create custom workout plans for weight loss, muscle building, and overall health. Start your journey today!",
   keywords: [

@@ -15,14 +15,14 @@ const Footer = () => {
       </div>
       <div className="container-start-v bg-dark px-6 pt-10 gap-10">
         <div className="container-start-v gap-3">
-          <Link href="/" className="container-center w-fit">
+          <Link href="/" className="container-center w-fit gap-3">
             <Image
-              src="/sakka_logo.png"
+              src="/logo.png"
               alt="Khaled Elsakka Logo"
               width={50}
               height={50}
             />
-            <span className="text-white text-3xl select-none">ELSAKKA</span>
+            <span className="text-white text-3xl select-none">C. MORSY</span>
           </Link>
           <p className={`text-fade ${space_grotesk.className}`}>
             Achieve lasting fitness results with science-backed, customized
@@ -33,25 +33,25 @@ const Footer = () => {
           <div className="container-center gap-3 mt-3">
             <SocialLink
               variant="outline"
-              href="https://www.facebook.com/p/Khaled-Elsakka-61559620383183/"
+              href="https://www.facebook.com/mahmoudmorsyyy"
               src="/facebook.svg"
               alt="facebook icon"
             />
             <SocialLink
               variant="outline"
-              href="https://www.instagram.com/elsakka1/?hl=ar"
+              href="https://www.instagram.com/coach_morsy/"
               src="/instagram.svg"
               alt="instagram icon"
             />
             <SocialLink
               variant="outline"
-              href="https://www.youtube.com/@KhaledElsakka"
+              href="https://www.youtube.com/channel/UCayte2Gjw7yZ7gkG-uB1xIA"
               src="/youtube.svg"
               alt="youtube icon"
             />
             <SocialLink
               variant="outline"
-              href="https://www.tiktok.com/@khaledelsakka658"
+              href="https://www.tiktok.com/@coach_morsy"
               src="/tiktok.svg"
               alt="tiktok icon"
             />
@@ -114,7 +114,7 @@ const Footer = () => {
               />
               <Link
                 className="text-disabled text-base"
-                href="https://wa.me/201069389022"
+                href="https://wa.me/201017053245"
                 target="_blank"
               >
                 01069389022

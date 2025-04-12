@@ -4,14 +4,9 @@ import { memo } from "react";
 
 const Logo = memo(function Logo() {
   return (
-    <Link href="/" className="container-center">
-      <Image
-        src="/sakka_logo.png"
-        alt="Khaled Elsakka Logo"
-        width={50}
-        height={50}
-      />
-      <span className="text-white text-3xl select-none">ELSAKKA</span>
+    <Link href="/" className="container-center gap-3">
+      <Image className="-translate-y-0.5" src="/logo.png" alt="Logo" width={50} height={50} />
+      <span className="text-white text-3xl select-none">C. MORSY</span>
     </Link>
   );
 });

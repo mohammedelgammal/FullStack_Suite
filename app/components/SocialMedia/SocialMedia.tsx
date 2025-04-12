@@ -41,22 +41,22 @@ const SocialLink = ({ href, src, alt }: SocialLinkPropsType) => {
 
 const socials: SocialsType[] = [
   {
-    href: "https://www.facebook.com/p/Khaled-Elsakka-61559620383183/",
+    href: "https://www.facebook.com/mahmoudmorsyyy",
     src: "/facebook.svg",
     alt: "facebook icon",
   },
   {
-    href: "https://www.instagram.com/elsakka1/?hl=ar",
+    href: "https://www.instagram.com/coach_morsy/",
     src: "/instagram.svg",
     alt: "instagram icon",
   },
   {
-    href: "https://www.youtube.com/@KhaledElsakka",
+    href: "https://www.youtube.com/channel/UCayte2Gjw7yZ7gkG-uB1xIA",
     src: "/youtube.svg",
     alt: "youtube icon",
   },
   {
-    href: "https://www.tiktok.com/@khaledelsakka658",
+    href: "https://www.tiktok.com/@coach_morsy",
     src: "/tiktok.svg",
     alt: "tiktok icon",
   },
