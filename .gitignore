@@ -8,10 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 .vscode
-
+.swc
 .vite
 venv
 .env
+.next
+*.ts
 
 node_modules
 dist
